@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
    RewriteEngine on
 	RewriteBase /~rrd/nvdkert/
-   RewriteRule    ^$ app/webroot/    [L]
-   RewriteRule    (.*) app/webroot/$1 [L]
+   RewriteRule    ^$ webroot/    [L]
+   RewriteRule    (.*) webroot/$1 [L]
 </IfModule>

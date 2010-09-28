@@ -90,6 +90,37 @@ class NaplokController extends AppController {
 		$this->Session->setFlash(__('The Naplo could not be deleted. Please, try again.', true));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	function lekerdezes(){
+		//debug($this->data);
+		//adott munkáshoz tartozó rekordok megjelenítése
+		if($this->data){
+			$sql = 'SELECT *
+					FROM naplok, helyek, munkasok, szolgtipusok, termenyek, vevok, mennyisegiegysegek
+					WHERE naplok.munkas_id = munkasok.id
+					AND naplok.hely_id = helyek.id
+					AND naplok.szolgtipus_id = szolgtipusok.id
+					AND naplok.termeny_id = termenyek.id
+					AND naplok.mennyisegiegyseg_id = mennyisegiegysegek.id
+					AND naplok.vevo_id = vevok.id';
+			
+			$szuro = '';
+			if($this->data['Naplo']['munkas_id']) $szuro .= ' AND naplok.munkas_id = ' . $this->data['Naplo']['munkas_id'];
+			if($this->data['Naplo']['hely_id']) $szuro .= ' AND naplok.hely_id = ' . $this->data['Naplo']['hely_id'];
+			if($this->data['Naplo']['szolgtipus_id']) $szuro .= ' AND naplok.szolgtipus_id = ' . $this->data['Naplo']['szolgtipus_id'];
+			
+			$eredmeny = $this->Naplo->query($sql . $szuro);
+			$this->set('eredmeny', $eredmeny);
+		}
+		
+		$munkasok = $this->Naplo->Munkas->find('list', array('fields' => array('id', 'munkas', 'oradij')));
+		$helyek = $this->Naplo->Hely->find('list', array('fields' => 'hely'));
+		$mennyisegiegysegek = $this->Naplo->Mennyisegiegyseg->find('list', array('fields' => 'mennyisegiegyseg'));
+		$szolgtipusok = $this->Naplo->Szolgtipus->find('list', array('fields' => 'szolgalattipus'));
+		$termenyek = $this->Naplo->Termeny->find('list', array('fields' => 'termeny'));
+		$vevok = $this->Naplo->Vevo->find('list', array('fields' => 'vevo'));
+		$this->set(compact('munkasok', 'helyek', 'szolgtipusok', 'termenyek', 'vevok', 'mennyisegiegysegek'));
+	}	
 
 }
 ?>

@@ -10,6 +10,8 @@
 		echo $html->meta('icon');
 
 		echo $html->css('cake.generic');
+		print $html->css('kert');
+		
 		print $javascript->link('prototype');
 		print $javascript->link('inputmask');
 		print $javascript->link('kert');
@@ -19,7 +21,14 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo 'Kertészeti nyilvántartó'; ?></h1>
+			<h1>
+				<?php
+					echo $html->link('Kertészeti nyilvántartó', '/');
+					echo ' | ' . $html->link(__('Új naplóbejegyzés', true), array('controller' => 'naplok', 'action' => 'add'));
+					echo ' | ' . $html->link(__('Naplóbejegyzések', true), array('controller' => 'naplok', 'action' => 'index'));
+					echo ' | ' . $html->link(__('Lekérdezések', true), array('controller' => 'naplok', 'action' => 'lekerdezes'));
+				?>
+			</h1>
 		</div>
 		<div id="content">
 
