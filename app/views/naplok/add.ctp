@@ -10,7 +10,11 @@ print $javascript->link('kert.naplo.js', false);
 	<?php
 		echo $form->input('munkas_id', array('empty' => ' --- válassz --- '));
 		echo $form->input('hely_id', array('empty' => ' --- válassz --- '));
-		echo $form->input('szolgalat');
+		print '<div class="input required">';
+			print $form->label('Szolgalat', 'Szolgálat');
+			print $ajax->autoComplete('szolgalat',
+											'/naplok/searchSzolgalat');
+		print '</div>';
 		echo $form->input('szolgtipus_id', array('empty' => ' --- válassz --- '));
 		echo $form->input('datum', array('type' => 'text'));
 		echo $form->input('ora');

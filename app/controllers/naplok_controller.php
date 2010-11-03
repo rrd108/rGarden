@@ -93,7 +93,6 @@ class NaplokController extends AppController {
 	
 	function lekerdezes(){
 		//debug($this->data);
-		//adott munkáshoz tartozó rekordok megjelenítése
 		if($this->data){
 			$sql = 'SELECT *
 					FROM naplok, helyek, munkasok, szolgtipusok, termenyek, vevok, mennyisegiegysegek
@@ -108,6 +107,9 @@ class NaplokController extends AppController {
 			if($this->data['Naplo']['munkas_id']) $szuro .= ' AND naplok.munkas_id = ' . $this->data['Naplo']['munkas_id'];
 			if($this->data['Naplo']['hely_id']) $szuro .= ' AND naplok.hely_id = ' . $this->data['Naplo']['hely_id'];
 			if($this->data['Naplo']['szolgtipus_id']) $szuro .= ' AND naplok.szolgtipus_id = ' . $this->data['Naplo']['szolgtipus_id'];
+			if($this->data['Naplo']['szolgalat']) $szuro .= ' AND naplok.szolgalat = "' . $this->data['Naplo']['szolgalat'] . '"';
+			
+			//debug($sql . $szuro);
 			
 			$eredmeny = $this->Naplo->query($sql . $szuro);
 			$this->set('eredmeny', $eredmeny);
@@ -120,7 +122,22 @@ class NaplokController extends AppController {
 		$termenyek = $this->Naplo->Termeny->find('list', array('fields' => 'termeny'));
 		$vevok = $this->Naplo->Vevo->find('list', array('fields' => 'vevo'));
 		$this->set(compact('munkasok', 'helyek', 'szolgtipusok', 'termenyek', 'vevok', 'mennyisegiegysegek'));
-	}	
+	}
+	
+	function searchSzolgalat(){
+		//ajaxos keresés a számlákban
+		Configure::write('debug', 0);
+		//a $this->data tömbben érkezik a paraméter
+		$this->set('searchSzolgalat', $this->Naplo->find('all',
+								array(
+									'conditions' => array("Naplo.szolgalat LIKE '" . $this->data['Naplo']['szolgalat'] . "%'"),
+									'fields' => 'szolgalat',
+									'group' => 'szolgalat',
+									'recursive' => -1
+									)
+								));
+		$this->render('searchSzolgalat', 'ajax');
+	}
 
 }
 ?>

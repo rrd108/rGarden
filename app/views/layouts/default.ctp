@@ -13,6 +13,7 @@
 		print $html->css('kert');
 		
 		print $javascript->link('prototype');
+		print $javascript->link('scriptaculous'); 
 		print $javascript->link('inputmask');
 		print $javascript->link('kert');
 		echo $scripts_for_layout;

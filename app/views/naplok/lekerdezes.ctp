@@ -1,4 +1,5 @@
 <?php
+
 ?>
 <div class="naplok form">
 <?php echo $form->create('Naplo', array('action' => 'lekerdezes'));?>
@@ -7,7 +8,11 @@
 	<?php
 		echo $form->input('munkas_id', array('empty' => ' --- válassz --- '));
 		echo $form->input('hely_id', array('empty' => ' --- válassz --- '));
-//		echo $form->input('szolgalat');
+		print '<div class="input required">';
+			print $form->label('Szolgalat', 'Szolgálat');
+			print $ajax->autoComplete('szolgalat',
+											'/naplok/searchSzolgalat');
+		print '</div>';
 		echo $form->input('szolgtipus_id', array('empty' => ' --- válassz --- '));
 /*		echo $form->input('datum', array('type' => 'text'));
 		echo $form->input('ora');
@@ -69,6 +74,7 @@
 				print '<th>' . 'Munkás' . '</th>';
 				print '<th>' . 'Hely' . '</th>';
 				print '<th>' . 'Dátum' . '</th>';
+				print '<th>' . 'Szolgálat tipus' . '</th>';
 				print '<th>' . 'Szolgálat' . '</th>';
 				print '<th>' . 'Idő' . '</th>';
 				print '<th>' . 'Termény' . '</th>';
@@ -94,6 +100,7 @@
 					print '<td>' . $e['helyek']['hely'] . '</td>';
 					print '<td>' . $e['naplok']['datum'] . '</td>';
 					print '<td>' . $e['szolgtipusok']['szolgalattipus'] . '</td>';
+					print '<td>' . $e['naplok']['szolgalat'] . '</td>';
 					print '<td>' . $e['naplok']['ora'] . '</td>';
 					print '<td>' . $e['termenyek']['termeny'] . '</td>';
 					print '<td>' . $e['naplok']['mennyiseg'] . ' ' . $e['mennyisegiegysegek']['mennyisegiegyseg'] . '</td>';
@@ -107,6 +114,7 @@
 			}
 			print '<tr class="b">';
 				print '<td>Összesen</td>';
+				print '<td></td>';
 				print '<td></td>';
 				print '<td></td>';
 				print '<td></td>';
