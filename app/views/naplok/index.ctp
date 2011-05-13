@@ -10,17 +10,11 @@ echo $paginator->counter(array(
 <tr>
 	<th><?php echo $paginator->sort('munkas_id');?></th>
 	<th><?php echo $paginator->sort('hely_id');?></th>
-	<th><?php echo $paginator->sort('szolgtipus_id');?></th>
 	<th><?php echo $paginator->sort('datum');?></th>
 	<th><?php echo $paginator->sort('szolgalat');?></th>
 	<th><?php echo $paginator->sort('ora');?></th>
 	<th><?php echo 'Óradíj';?></th>
 	<th><?php echo $paginator->sort('termeny_id');?></th>
-	<th><?php echo $paginator->sort('Menny', 'mennyiseg');?></th>
-	<th><?php echo $paginator->sort('Me', 'mennyisegiegyseg_id');?></th>	
-	<th><?php echo $paginator->sort('felhasznalt');?></th>
-	<th><?php echo $paginator->sort('koltseg');?></th>
-	<th><?php echo $paginator->sort('vevo_id');?></th>
 	<th><?php echo $paginator->sort('megjegyzes');?></th>
 	<th class="actions"><?php __('Actions');?></th>
 </tr>
@@ -40,9 +34,6 @@ foreach ($naplok as $naplo):
 			<?php echo $html->link($naplo['Hely']['hely'], array('controller' => 'helyek', 'action' => 'view', $naplo['Hely']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $html->link($naplo['Szolgtipus']['szolgalattipus'], array('controller' => 'szolgtipusok', 'action' => 'view', $naplo['Szolgtipus']['id'])); ?>
-		</td>
-		<td>
 			<?php echo $naplo['Naplo']['datum']; ?>
 		</td>
 		<td>
@@ -56,21 +47,6 @@ foreach ($naplok as $naplo):
 		</td>
 		<td>
 			<?php echo $html->link($naplo['Termeny']['termeny'], array('controller' => 'termenyek', 'action' => 'view', $naplo['Termeny']['id'])); ?>
-		</td>
-		<td>
-			<?php echo $naplo['Naplo']['mennyiseg']; ?>
-		</td>
-		<td>
-			<?php echo $html->link($naplo['Mennyisegiegyseg']['mennyisegiegyseg'], array('controller' => 'mennyisegiegysegek', 'action' => 'view', $naplo['Mennyisegiegyseg']['id'])); ?>
-		</td>
-		<td>
-			<?php echo $naplo['Naplo']['felhasznalt']; ?>
-		</td>
-		<td>
-			<?php echo $naplo['Naplo']['koltseg']; ?>
-		</td>
-		<td>
-			<?php echo $html->link($naplo['Vevo']['vevo'], array('controller' => 'vevok', 'action' => 'view', $naplo['Vevo']['id'])); ?>
 		</td>
 		<td>
 			<?php echo $naplo['Naplo']['megjegyzes']; ?>
@@ -95,9 +71,6 @@ foreach ($naplok as $naplo):
 		<li><?php echo $html->link(__('Naplóbejegyzések', true), array('action' => 'index'));?></li>
 		<li><?php echo $html->link(__('Munkások', true), array('controller' => 'munkasok', 'action' => 'index')); ?> </li>
 		<li><?php echo $html->link(__('Helyek', true), array('controller' => 'helyek', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('Szolgálattipusok', true), array('controller' => 'szolgtipusok', 'action' => 'index')); ?> </li>
 		<li><?php echo $html->link(__('Termények', true), array('controller' => 'termenyek', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('Vevők', true), array('controller' => 'vevok', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('Mennyiségi egységek', true), array('controller' => 'mennyisegiegysegek', 'action' => 'index')); ?> </li>
 	</ul>
 </div>

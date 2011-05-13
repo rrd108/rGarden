@@ -13,7 +13,6 @@
 			print $ajax->autoComplete('szolgalat',
 											'/naplok/searchSzolgalat');
 		print '</div>';
-		echo $form->input('szolgtipus_id', array('empty' => ' --- válassz --- '));
 /*		echo $form->input('datum', array('type' => 'text'));
 		echo $form->input('ora');
 		echo $form->input('mennyiseg');
@@ -74,16 +73,10 @@
 				print '<th>' . 'Munkás' . '</th>';
 				print '<th>' . 'Hely' . '</th>';
 				print '<th>' . 'Dátum' . '</th>';
-				print '<th>' . 'Szolgálat tipus' . '</th>';
 				print '<th>' . 'Szolgálat' . '</th>';
 				print '<th>' . 'Idő' . '</th>';
 				print '<th>' . 'Termény' . '</th>';
-				print '<th>' . 'Mennyiség' . '</th>';
-				print '<th>' . 'Felhasznált' . '</th>';
-				print '<th>' . 'Költség' . '</th>';
 				print '<th>' . 'Óra költség' . '</th>';
-				print '<th>' . 'Összes költség' . '</th>';
-				print '<th>' . 'Vevő' . '</th>';
 				print '<th>' . 'Megjegyzés' . '</th>';
 			print '</tr>';
 			
@@ -99,16 +92,10 @@
 					print '<td>' . $e['munkasok']['munkas'] . '</td>';
 					print '<td>' . $e['helyek']['hely'] . '</td>';
 					print '<td>' . $e['naplok']['datum'] . '</td>';
-					print '<td>' . $e['szolgtipusok']['szolgalattipus'] . '</td>';
 					print '<td>' . $e['naplok']['szolgalat'] . '</td>';
 					print '<td>' . $e['naplok']['ora'] . '</td>';
 					print '<td>' . $e['termenyek']['termeny'] . '</td>';
-					print '<td>' . $e['naplok']['mennyiseg'] . ' ' . $e['mennyisegiegysegek']['mennyisegiegyseg'] . '</td>';
-					print '<td>' . $e['naplok']['felhasznalt'] . '</td>';
-					print '<td>' . $e['naplok']['koltseg'] . '</td>';
 					print '<td>' . number_format($oraKtg, 0, '', '.') . '</td>';
-					print '<td>' . number_format($osszKtg, 0, '', '.') . '</td>';
-					print '<td>' . $e['vevok']['vevo'] . '</td>';
 					print '<td>' . $e['naplok']['megjegyzes'] . '</td>';
 				print '</tr>';
 			}
@@ -117,15 +104,9 @@
 				print '<td></td>';
 				print '<td></td>';
 				print '<td></td>';
-				print '<td></td>';
 				print '<td>' . number_format($osszes['ora'], 0, '', '.') . '</td>';
 				print '<td></td>';
-				print '<td></td>';
-				print '<td></td>';
-				print '<td>' . number_format($osszes['ktg'], 0, '', '.') . '</td>';
 				print '<td>' . number_format($osszes['oraKtg'], 0, '', '.') . '</td>';
-				print '<td>' . number_format($osszes['osszKtg'], 0, '', '.') . '</td>';
-				print '<td></td>';
 				print '<td></td>';
 			print '</tr>';
 		print '</table>';

@@ -17,8 +17,27 @@ class NaplokController extends AppController {
 	}
 
 	function add() {
-		//debug($this->data);die();
+		//debug($this->data);
 		if (!empty($this->data)) {
+			
+			//ha van új munkásunk akkor azt létre kell hozni
+			if($this->data['Naplo']['NaploMunkas'] && !$this->data['Naplo']['munkas_id']){
+				$this->data['Munkas']['munkas'] = $this->data['Naplo']['NaploMunkas'];
+				$this->Naplo->Munkas->create();
+				$this->Naplo->Munkas->save($this->data);
+				$this->data['Naplo']['munkas_id'] = $this->Naplo->Munkas->id;
+			}
+			
+			//ha van új hely, akkor azt létre kell hozni
+			if($this->data['Naplo']['NaploHely'] && !$this->data['Naplo']['hely_id']){
+				$this->data['Hely']['hely'] = $this->data['Naplo']['NaploHely'];
+				$this->Naplo->Hely->create();
+				$this->Naplo->Hely->save($this->data);
+				$this->data['Naplo']['hely_id'] = $this->Naplo->Hely->id;
+			}
+			
+			//ha van új termény akkor azt létre kell hozni
+			
 			$this->data['Naplo']['ora'] = str_replace(',', '.', $this->data['Naplo']['ora']);
 			$this->Naplo->create();
 			if ($this->Naplo->save($this->data)) {
@@ -27,15 +46,9 @@ class NaplokController extends AppController {
 													'munkas_id' => $this->data['Naplo']['munkas_id'],
 													'hely_id' => false,
 													'szolgalat' => false,
-													'szolgtipus_id' => false,
 													'datum' => $this->data['Naplo']['datum'],
 													'ora' => false,
-													'mennyiseg' => false,
-													'mennyisegiegyseg_id' => false,
 													'termeny_id' => false,
-													'felhasznalt' => false,
-													'koltseg' => false,
-													'vevo_id' => false,
 													'megjegyzes' => false
 													);
 			} else {
@@ -43,12 +56,8 @@ class NaplokController extends AppController {
 			}
 		}
 		$munkasok = $this->Naplo->Munkas->find('list', array('fields' => array('id', 'munkas', 'oradij')));
-		$helyek = $this->Naplo->Hely->find('list', array('fields' => 'hely'));
-		$mennyisegiegysegek = $this->Naplo->Mennyisegiegyseg->find('list', array('fields' => 'mennyisegiegyseg'));
-		$szolgtipusok = $this->Naplo->Szolgtipus->find('list', array('fields' => 'szolgalattipus'));
 		$termenyek = $this->Naplo->Termeny->find('list', array('fields' => 'termeny'));
-		$vevok = $this->Naplo->Vevo->find('list', array('fields' => 'vevo'));
-		$this->set(compact('munkasok', 'helyek', 'szolgtipusok', 'termenyek', 'vevok', 'mennyisegiegysegek'));
+		$this->set(compact('munkasok', 'termenyek'));
 	}
 
 	function edit($id = null) {
@@ -71,11 +80,8 @@ class NaplokController extends AppController {
 		}
 		$munkasok = $this->Naplo->Munkas->find('list', array('fields' => 'munkas'));
 		$helyek = $this->Naplo->Hely->find('list', array('fields' => 'hely'));
-		$mennyisegiegysegek = $this->Naplo->Mennyisegiegyseg->find('list', array('fields' => 'mennyisegiegyseg'));
-		$szolgtipusok = $this->Naplo->Szolgtipus->find('list', array('fields' => 'szolgalattipus'));
 		$termenyek = $this->Naplo->Termeny->find('list', array('fields' => 'termeny'));
-		$vevok = $this->Naplo->Vevo->find('list', array('fields' => 'vevo'));
-		$this->set(compact('munkasok','helyek','szolgtipusok','termenyek','vevok', 'mennyisegiegysegek'));
+		$this->set(compact('munkasok','helyek','termenyek'));
 	}
 
 	function delete($id = null) {
@@ -95,18 +101,14 @@ class NaplokController extends AppController {
 		//debug($this->data);
 		if($this->data){
 			$sql = 'SELECT *
-					FROM naplok, helyek, munkasok, szolgtipusok, termenyek, vevok, mennyisegiegysegek
+					FROM naplok, helyek, munkasok, termenyek
 					WHERE naplok.munkas_id = munkasok.id
 					AND naplok.hely_id = helyek.id
-					AND naplok.szolgtipus_id = szolgtipusok.id
-					AND naplok.termeny_id = termenyek.id
-					AND naplok.mennyisegiegyseg_id = mennyisegiegysegek.id
-					AND naplok.vevo_id = vevok.id';
+					AND naplok.termeny_id = termenyek.id';
 			
 			$szuro = '';
 			if($this->data['Naplo']['munkas_id']) $szuro .= ' AND naplok.munkas_id = ' . $this->data['Naplo']['munkas_id'];
 			if($this->data['Naplo']['hely_id']) $szuro .= ' AND naplok.hely_id = ' . $this->data['Naplo']['hely_id'];
-			if($this->data['Naplo']['szolgtipus_id']) $szuro .= ' AND naplok.szolgtipus_id = ' . $this->data['Naplo']['szolgtipus_id'];
 			if($this->data['Naplo']['szolgalat']) $szuro .= ' AND naplok.szolgalat = "' . $this->data['Naplo']['szolgalat'] . '"';
 			
 			//debug($sql . $szuro);
@@ -117,11 +119,8 @@ class NaplokController extends AppController {
 		
 		$munkasok = $this->Naplo->Munkas->find('list', array('fields' => array('id', 'munkas', 'oradij')));
 		$helyek = $this->Naplo->Hely->find('list', array('fields' => 'hely'));
-		$mennyisegiegysegek = $this->Naplo->Mennyisegiegyseg->find('list', array('fields' => 'mennyisegiegyseg'));
-		$szolgtipusok = $this->Naplo->Szolgtipus->find('list', array('fields' => 'szolgalattipus'));
 		$termenyek = $this->Naplo->Termeny->find('list', array('fields' => 'termeny'));
-		$vevok = $this->Naplo->Vevo->find('list', array('fields' => 'vevo'));
-		$this->set(compact('munkasok', 'helyek', 'szolgtipusok', 'termenyek', 'vevok', 'mennyisegiegysegek'));
+		$this->set(compact('munkasok', 'helyek', 'termenyek'));
 	}
 	
 	function searchSzolgalat(){
@@ -138,6 +137,5 @@ class NaplokController extends AppController {
 								));
 		$this->render('searchSzolgalat', 'ajax');
 	}
-
 }
 ?>

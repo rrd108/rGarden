@@ -5,7 +5,7 @@ class Naplo extends AppModel {
 	var $validate = array(
 		'munkas_id' => array('numeric'),
 		'hely_id' => array('numeric'),
-		'szolgtipus_id' => array('numeric'),
+		'termeny_id' => array('numeric'),
 		'szolgalat' => array('notempty')
 	);
 
@@ -25,30 +25,9 @@ class Naplo extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'Szolgtipus' => array(
-			'className' => 'Szolgtipus',
-			'foreignKey' => 'szolgtipus_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
 		'Termeny' => array(
 			'className' => 'Termeny',
 			'foreignKey' => 'termeny_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Mennyisegiegyseg' => array(
-			'className' => 'Mennyisegiegyseg',
-			'foreignKey' => 'mennyisegiegyseg_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Vevo' => array(
-			'className' => 'Vevo',
-			'foreignKey' => 'vevo_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

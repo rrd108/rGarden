@@ -70,19 +70,10 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Edit Naplo', true), array('action' => 'edit', $naplo['Naplo']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Delete Naplo', true), array('action' => 'delete', $naplo['Naplo']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $naplo['Naplo']['id'])); ?> </li>
-		<li><?php echo $html->link(__('List Naplok', true), array('action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Naplo', true), array('action' => 'add')); ?> </li>
-		<li><?php echo $html->link(__('List Munkasok', true), array('controller' => 'munkasok', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Munkas', true), array('controller' => 'munkasok', 'action' => 'add')); ?> </li>
-		<li><?php echo $html->link(__('List Helyek', true), array('controller' => 'helyek', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Hely', true), array('controller' => 'helyek', 'action' => 'add')); ?> </li>
-		<li><?php echo $html->link(__('List Szolgtipusok', true), array('controller' => 'szolgtipusok', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Szolgtipus', true), array('controller' => 'szolgtipusok', 'action' => 'add')); ?> </li>
-		<li><?php echo $html->link(__('List Termenyek', true), array('controller' => 'termenyek', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Termeny', true), array('controller' => 'termenyek', 'action' => 'add')); ?> </li>
-		<li><?php echo $html->link(__('List Vevok', true), array('controller' => 'vevok', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Vevo', true), array('controller' => 'vevok', 'action' => 'add')); ?> </li>
+		<li><?php echo $html->link(__('Új naplóbejegyzés', true), array('action' => 'add'));?></li>
+		<li><?php echo $html->link(__('Naplóbejegyzések', true), array('action' => 'index'));?></li>
+		<li><?php echo $html->link(__('Munkások', true), array('controller' => 'munkasok', 'action' => 'index')); ?> </li>
+		<li><?php echo $html->link(__('Helyek', true), array('controller' => 'helyek', 'action' => 'index')); ?> </li>
+		<li><?php echo $html->link(__('Termények', true), array('controller' => 'termenyek', 'action' => 'index')); ?> </li>
 	</ul>
 </div>

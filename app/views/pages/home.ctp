@@ -10,9 +10,6 @@
 	<ul>
 		<li><?php echo $html->link(__('Munkások', true), array('controller' => 'munkasok', 'action' => 'index')); ?> </li>
 		<li><?php echo $html->link(__('Helyek', true), array('controller' => 'helyek', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('Szolgálattipusok', true), array('controller' => 'szolgtipusok', 'action' => 'index')); ?> </li>
 		<li><?php echo $html->link(__('Termények', true), array('controller' => 'termenyek', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('Vevők', true), array('controller' => 'vevok', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('Mennyiségi egységek', true), array('controller' => 'mennyisegiegysegek', 'action' => 'index')); ?> </li>
 	</ul>
 </div>
