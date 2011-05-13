@@ -20,12 +20,16 @@ class NaplokController extends AppController {
 		//debug($this->data);
 		if (!empty($this->data)) {
 			
+			$munkas = $this->data['Naplo']['NaploMunkas'];
+			$ujTorzs = '';
+			
 			//ha van új munkásunk akkor azt létre kell hozni
 			if($this->data['Naplo']['NaploMunkas'] && !$this->data['Naplo']['munkas_id']){
-				$this->data['Munkas']['munkas'] = $this->data['Naplo']['NaploMunkas'];
+				$munkas = $this->data['Munkas']['munkas'] = $this->data['Naplo']['NaploMunkas'];
 				$this->Naplo->Munkas->create();
 				$this->Naplo->Munkas->save($this->data);
 				$this->data['Naplo']['munkas_id'] = $this->Naplo->Munkas->id;
+				$ujTorzs .= 'Új munkásként hozzáadva: ' . $munkas . '<br>';
 			}
 			
 			//ha van új hely, akkor azt létre kell hozni
@@ -34,14 +38,22 @@ class NaplokController extends AppController {
 				$this->Naplo->Hely->create();
 				$this->Naplo->Hely->save($this->data);
 				$this->data['Naplo']['hely_id'] = $this->Naplo->Hely->id;
+				$ujTorzs .= 'Új helyként hozzáadva: ' . $this->data['Hely']['hely'] . '<br>';
 			}
 			
 			//ha van új termény akkor azt létre kell hozni
+			if($this->data['Naplo']['NaploTermeny'] && $this->data['Naplo']['termeny_id'] == 1){
+				$this->data['Termeny']['termeny'] = $this->data['Naplo']['NaploTermeny'];
+				$this->Naplo->Termeny->create();
+				$this->Naplo->Termeny->save($this->data);
+				$this->data['Naplo']['termeny_id'] = $this->Naplo->Termeny->id;
+				$ujTorzs .= 'Új terményként hozzáadva: ' . $this->data['Termeny']['termeny'] . '<br>';
+			}
 			
 			$this->data['Naplo']['ora'] = str_replace(',', '.', $this->data['Naplo']['ora']);
 			$this->Naplo->create();
 			if ($this->Naplo->save($this->data)) {
-				$this->Session->setFlash(__('The Naplo has been saved', true));
+				$this->Session->setFlash($ujTorzs . 'A napló mentve');
 				$this->data['Naplo'] = array(
 													'munkas_id' => $this->data['Naplo']['munkas_id'],
 													'hely_id' => false,
@@ -52,22 +64,26 @@ class NaplokController extends AppController {
 													'megjegyzes' => false
 													);
 			} else {
-				$this->Session->setFlash(__('The Naplo could not be saved. Please, try again.', true));
+				$this->Session->setFlash($ujTorzs . 'A naplót nem sikerült menteni');
 			}
 		}
-		$munkasok = $this->Naplo->Munkas->find('list', array('fields' => array('id', 'munkas', 'oradij')));
+		
 		$termenyek = $this->Naplo->Termeny->find('list', array('fields' => 'termeny'));
-		$this->set(compact('munkasok', 'termenyek'));
+		$this->set(compact('munkas', 'termenyek'));
 	}
 
 	function edit($id = null) {
-		//debug($this->data);
+		//debug($this->data);die();
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid Naplo', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
 			$this->data['Naplo']['ora'] = str_replace(',', '.', $this->data['Naplo']['ora']);
+			if(!$this->data['Naplo']['NaploTermeny'] && $this->data['Naplo']['termeny_id']){
+				//nincs termény név, de van id, véletlenül megadtunk egy terméket de valójában nics
+				$this->data['Naplo']['termeny_id'] = 1;		//default
+			}
 			if ($this->Naplo->save($this->data)) {
 				$this->Session->setFlash(__('The Naplo has been saved', true));
 				$this->redirect(array('action' => 'index'));

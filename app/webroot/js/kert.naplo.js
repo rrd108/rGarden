@@ -29,7 +29,9 @@ kert.naplo = {
 		
 		//Event.observe(kert.naplo.inputok.koltseg, 'change', kert.naplo.osszegFrissit);
 		Event.observe(kert.naplo.inputok.ora, 'change', kert.naplo.osszegFrissit);
-		//Event.observe(kert.naplo.inputok.munkas, 'change', kert.naplo.getOradij);
+		//Event.observe(kert.naplo.inputok.munkas, 'change', kert.naplo.getOradij)
+		
+		kert.naplo.inputok.munkas.focus();
 	},//kert.naplo.init
 	
 	osszegFrissit : function(e){

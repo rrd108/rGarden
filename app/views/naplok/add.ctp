@@ -14,11 +14,12 @@ print $javascript->link('kert.naplo.js', false);
 			print $ajax->autoComplete('NaploMunkas',
 											'/munkasok/searchMunkas',
 											array(
-												  'afterUpdateElement' => 'kert.naplo.munkashandler'
+												  'afterUpdateElement' => 'kert.naplo.munkashandler',
+												  'value' => isset($munkas) ? $munkas : ''
 												  )
 											);
 		print '</div>';
-		print $form->input('munkas_id', array('type' => 'hidden'));
+		print $form->input('munkas_id', array('type' => 'hidden', 'value' => $this->data['Naplo']['munkas_id']));
 		
 		echo $form->input('datum', array('type' => 'text'));
 
