@@ -7,9 +7,13 @@ echo $paginator->counter(array(
 ));
 ?></p>
 <div class="paging">
-	<?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
- | 	<?php echo $paginator->numbers();?>
-	<?php echo $paginator->next(__('next', true).' >>', array(), null, array('class' => 'disabled'));?>
+	<?php
+		echo $paginator->first('<=');
+		echo ' | ' . $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));
+		echo ' | ' . $paginator->numbers();
+		echo ' | ' . $paginator->next(__('next', true).' >>', array(), null, array('class' => 'disabled'));
+		echo ' | ' . $paginator->last('=>');
+	?>
 </div>
 
 <table cellpadding="0" cellspacing="0">
