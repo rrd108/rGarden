@@ -92,6 +92,7 @@ print $javascript->link('kert.lekerdezes.js', false);
 				print '<th>' . 'Termény' . '</th>';
 				print '<th>' . 'Óra költség' . '</th>';
 				print '<th>' . 'Megjegyzés' . '</th>';
+				print '<th>' . 'Eszközök' . '</th>';
 			print '</tr>';
 			
 			$osszes = array('ora' => 0, 'ktg' => 0, 'oraKtg' => 0, 'osszKtg' => 0);
@@ -111,6 +112,11 @@ print $javascript->link('kert.lekerdezes.js', false);
 					print '<td>' . $e['termenyek']['termeny'] . '</td>';
 					print '<td>' . number_format($oraKtg, 0, '', '.') . '</td>';
 					print '<td>' . $e['naplok']['megjegyzes'] . '</td>';
+					print '<td class="actions">';
+						echo $html->link(__('Muti', true), array('action' => 'view', $e['naplok']['id']));
+						echo $html->link(__('Szerk', true), array('action' => 'edit', $e['naplok']['id']));
+						echo $html->link(__('Del', true), array('action' => 'delete', $e['naplok']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $e['naplok']['id']));
+					print '</td>';
 				print '</tr>';
 			}
 			print '<tr class="b">';
@@ -121,6 +127,7 @@ print $javascript->link('kert.lekerdezes.js', false);
 				print '<td>' . number_format($osszes['ora'], 0, '', '.') . '</td>';
 				print '<td></td>';
 				print '<td>' . number_format($osszes['oraKtg'], 0, '', '.') . '</td>';
+				print '<td></td>';
 				print '<td></td>';
 			print '</tr>';
 		print '</table>';
