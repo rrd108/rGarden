@@ -63,7 +63,7 @@ foreach ($naplok as $naplo):
 		</td>
 		<td class="actions">
 			<?php echo $html->link(__('Muti', true), array('action' => 'view', $naplo['Naplo']['id'])); ?>
-			<?php echo $html->link(__('Szerk', true), array('action' => 'edit', $naplo['Naplo']['id'])); ?>
+			<?php echo $html->link(__('Szerk', true), array('action' => 'edit', $naplo['Naplo']['id'] . '/' . $paginator->current())); ?>
 			<?php echo $html->link(__('Del', true), array('action' => 'delete', $naplo['Naplo']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $naplo['Naplo']['id'])); ?>
 		</td>
 	</tr>

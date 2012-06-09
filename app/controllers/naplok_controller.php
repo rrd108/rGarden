@@ -72,7 +72,7 @@ class NaplokController extends AppController {
 		$this->set(compact('munkas', 'termenyek'));
 	}
 
-	function edit($id = null) {
+	function edit($id = null, $p = null) {
 		//debug($this->data);die();
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid Naplo', true));
@@ -86,7 +86,7 @@ class NaplokController extends AppController {
 			}
 			if ($this->Naplo->save($this->data)) {
 				$this->Session->setFlash(__('The Naplo has been saved', true));
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'index/page:' . $this->data['Naplo']['p']));
 			} else {
 				$this->Session->setFlash(__('The Naplo could not be saved. Please, try again.', true));
 			}
@@ -97,7 +97,7 @@ class NaplokController extends AppController {
 		$munkasok = $this->Naplo->Munkas->find('list', array('fields' => 'munkas'));
 		$helyek = $this->Naplo->Hely->find('list', array('fields' => 'hely'));
 		$termenyek = $this->Naplo->Termeny->find('list', array('fields' => 'termeny'));
-		$this->set(compact('munkasok','helyek','termenyek'));
+		$this->set(compact('munkasok','helyek','termenyek', 'p'));
 	}
 
 	function delete($id = null) {

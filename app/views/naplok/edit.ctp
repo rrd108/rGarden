@@ -7,6 +7,7 @@ print $javascript->link('kert.naplo.js', false);
  		<legend><?php print 'Naplóbejegyzés szerkesztése'; ?></legend>
 		<h2><?php print 'Összes költség: <span id="osszktg">' . number_format(($this->data['Naplo']['ora']*$this->data['Munkas']['oradij'])+$this->data['Naplo']['koltseg'], 0, ',', '.') . '</span> Ft'; ?></h2>
 	<?php
+		print $form->input('p', array('type' => 'hidden', 'value' => $p));
 		echo $form->input('id');
 		print '<div class="input required">';
 			print $form->label('munkas', 'Munkavégző');
