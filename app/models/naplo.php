@@ -6,7 +6,9 @@ class Naplo extends AppModel {
 		'munkas_id' => array('numeric'),
 		'hely_id' => array('numeric'),
 		'termeny_id' => array('numeric'),
-		'szolgalat' => array('notempty')
+		'szolgalat' => array('notempty'),
+		'ora' => array('numeric'),
+		'datum' => array('notempty')
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
