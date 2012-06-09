@@ -126,6 +126,7 @@ class NaplokController extends AppController {
 			if($this->data['Naplo']['munkas_id']) $szuro .= ' AND naplok.munkas_id = ' . $this->data['Naplo']['munkas_id'];
 			if($this->data['Naplo']['hely_id']) $szuro .= ' AND naplok.hely_id = ' . $this->data['Naplo']['hely_id'];
 			if($this->data['Naplo']['szolgalat']) $szuro .= ' AND naplok.szolgalat = "' . $this->data['Naplo']['szolgalat'] . '"';
+			if($this->data['Naplo']['termeny_id']) $szuro .= ' AND naplok.termeny_id = "' . $this->data['Naplo']['termeny_id'] . '"';
 			
 			//debug($sql . $szuro);
 			
@@ -140,7 +141,7 @@ class NaplokController extends AppController {
 	}
 	
 	function searchSzolgalat(){
-		//ajaxos keresés a számlákban
+		//ajaxos keresés a szolgálatokban
 		Configure::write('debug', 0);
 		//a $this->data tömbben érkezik a paraméter
 		$this->set('searchSzolgalat', $this->Naplo->find('all',

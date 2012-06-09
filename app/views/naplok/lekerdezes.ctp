@@ -1,5 +1,5 @@
 <?php
-
+print $javascript->link('kert.lekerdezes.js', false);
 ?>
 <div class="naplok form">
 <?php echo $form->create('Naplo', array('action' => 'lekerdezes'));?>
@@ -7,17 +7,31 @@
  		<legend><?php __('Lekérdezés');?></legend>
 	<?php
 		echo $form->input('munkas_id', array('empty' => ' --- válassz --- '));
+
 		echo $form->input('hely_id', array('empty' => ' --- válassz --- '));
+
 		print '<div class="input required">';
 			print $form->label('Szolgalat', 'Szolgálat');
 			print $ajax->autoComplete('szolgalat',
 											'/naplok/searchSzolgalat');
 		print '</div>';
+		
+		print '<div class="input required">';
+			print $form->label('Termeny', 'Termény');
+			print $ajax->autoComplete('NaploTermeny',
+											'/termenyek/searchTermeny',
+											array(
+												'afterUpdateElement' => 'kert.lekerdezes.termenyhandler'
+											)
+											);
+		print '</div>';
+		print $form->input('Naplo.termeny_id', array('type' => 'hidden', 'value' => 1));
+
+		
 /*		echo $form->input('datum', array('type' => 'text'));
 		echo $form->input('ora');
 		echo $form->input('mennyiseg');
 		echo $form->input('mennyisegiegyseg_id');
-		echo $form->input('termeny_id');
 		echo $form->input('felhasznalt');
 		echo $form->input('koltseg');
 		echo $form->input('vevo_id');

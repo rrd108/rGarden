@@ -21,8 +21,8 @@ kert.naplo = {
 		
 		kert.naplo.osszktg = $('osszktg');
 		kert.naplo.oradij = $('oradij');
-		kert.naplo.hely = $('NaploHelyId');
-		kert.naplo.termeny = $('NaploTermenyId');
+		/*kert.naplo.hely = $('NaploHelyId');
+		kert.naplo.termeny = $('NaploTermenyId');*/
 		
 		new Inputmask('date_iso', kert.naplo.inputok.datum);
 		//new Inputmask('amount_eu', kert.naplo.inputok.koltseg);
@@ -47,20 +47,20 @@ kert.naplo = {
 		kert.naplo.oradij.value = kert.naplo.inputok.munkas.options[selected].parentNode.label;
 	},//kert.naplo.getOradij*/
 	
-	munkashandler : function(azInput, aLi){
+	/*munkashandler : function(azInput, aLi){
 		//az aLi.id munkas_id _ oradik formátumú
 		var d = aLi.id.split('_');
 		kert.naplo.inputok.munkasId.value = d[0];
 		kert.naplo.oradij.value = d[1];
-	},//kert.naplo.munkashandler
+	},//kert.naplo.munkashandler*/
 	
-	helyhandler : function(azInput, aLi){
+	/*helyhandler : function(azInput, aLi){
 		kert.naplo.hely.value = aLi.id;
-	},//kert.naplo.helyhandler
+	},//kert.naplo.helyhandler*/
 
-	termenyhandler : function(azInput, aLi){
+	/*termenyhandler : function(azInput, aLi){
 		kert.naplo.termeny.value = aLi.id;
-	}//kert.naplo.helyhandler
+	}//kert.naplo.helyhandler*/
 }
 
 
