@@ -25,7 +25,7 @@ print $javascript->link('kert.lekerdezes.js', false);
 											)
 											);
 		print '</div>';
-		print $form->input('Naplo.termeny_id', array('type' => 'hidden', 'value' => 1));
+		print $form->input('Naplo.termeny_id', array('type' => 'hidden', 'value' => $termenyId));
 
 		
 /*		echo $form->input('datum', array('type' => 'text'));

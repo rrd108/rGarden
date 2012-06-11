@@ -137,7 +137,8 @@ class NaplokController extends AppController {
 		$munkasok = $this->Naplo->Munkas->find('list', array('fields' => array('id', 'munkas', 'oradij')));
 		$helyek = $this->Naplo->Hely->find('list', array('fields' => 'hely'));
 		$termenyek = $this->Naplo->Termeny->find('list', array('fields' => 'termeny'));
-		$this->set(compact('munkasok', 'helyek', 'termenyek'));
+		$termenyId = $this->data['Naplo']['termeny_id'];
+		$this->set(compact('munkasok', 'helyek', 'termenyek', 'termenyId'));
 	}
 	
 	function searchSzolgalat(){
