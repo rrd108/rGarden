@@ -2,6 +2,13 @@
 class NaplokController extends AppController {
 
 	var $name = 'Naplok';
+	
+	var $paginate = array(
+        'limit' => 500,
+        'order' => array(
+            'Naplo.datum' => 'asc'
+        )
+    );
 
 	function index() {
 		$this->Naplo->recursive = 0;
@@ -114,23 +121,25 @@ class NaplokController extends AppController {
 	}
 	
 	function lekerdezes(){
-		//debug($this->data);
-		if($this->data){
-			$sql = 'SELECT *
-					FROM naplok, helyek, munkasok, termenyek
-					WHERE naplok.munkas_id = munkasok.id
-					AND naplok.hely_id = helyek.id
-					AND naplok.termeny_id = termenyek.id';
-			
-			$szuro = '';
-			if($this->data['Naplo']['munkas_id']) $szuro .= ' AND naplok.munkas_id = ' . $this->data['Naplo']['munkas_id'];
-			if($this->data['Naplo']['hely_id']) $szuro .= ' AND naplok.hely_id = ' . $this->data['Naplo']['hely_id'];
-			if($this->data['Naplo']['szolgalat']) $szuro .= ' AND naplok.szolgalat = "' . $this->data['Naplo']['szolgalat'] . '"';
-			if($this->data['Naplo']['termeny_id']) $szuro .= ' AND naplok.termeny_id = "' . $this->data['Naplo']['termeny_id'] . '"';
-			
-			//debug($sql . $szuro);
-			
-			$eredmeny = $this->Naplo->query($sql . $szuro);
+		$szuro = array();
+		if($this->data['Naplo']['munkas_id'])
+			$szuro['Naplo.munkas_id'] = $this->data['Naplo']['munkas_id'];
+		if($this->data['Naplo']['hely_id'])
+			$szuro['Naplo.hely_id'] =  $this->data['Naplo']['hely_id'];
+		if($this->data['Naplo']['szolgalat'])
+			$szuro['Naplo.szolgalat'] = $this->data['Naplo']['szolgalat'];
+		if($this->data['Naplo']['termeny_id'])
+			$szuro['Naplo.termeny_id'] = $this->data['Naplo']['termeny_id'];
+		
+		if($szuro){
+			$this->Session->write('paginatorSzuro', $szuro);
+		}
+		else{
+			$szuro = $this->Session->read('paginatorSzuro');
+		}
+
+		if($this->passedArgs || $this->data){
+			$eredmeny = $this->paginate('Naplo', $szuro);
 			$this->set('eredmeny', $eredmeny);
 		}
 		

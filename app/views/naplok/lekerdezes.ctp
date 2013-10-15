@@ -1,5 +1,7 @@
 <?php
 print $javascript->link('kert.lekerdezes.js', false);
+if($paginator)
+	$paginator->options(array('url' => $this->passedArgs));
 ?>
 <div class="naplok form">
 <?php echo $form->create('Naplo', array('action' => 'lekerdezes'));?>
@@ -27,15 +29,6 @@ print $javascript->link('kert.lekerdezes.js', false);
 		print '</div>';
 		print $form->input('Naplo.termeny_id', array('type' => 'hidden', 'value' => $termenyId));
 
-		
-/*		echo $form->input('datum', array('type' => 'text'));
-		echo $form->input('ora');
-		echo $form->input('mennyiseg');
-		echo $form->input('mennyisegiegyseg_id');
-		echo $form->input('felhasznalt');
-		echo $form->input('koltseg');
-		echo $form->input('vevo_id');
-		echo $form->input('megjegyzes');*/
 	?>
 	</fieldset>
 <?php echo $form->end('Submit');?>
@@ -45,77 +38,72 @@ print $javascript->link('kert.lekerdezes.js', false);
 	if(isset($eredmeny)){
 		//debug($eredmeny);
 		/*
-		[0] => Array(
-            [naplok] => Array(
-                    [id] => 619
-                    [munkas_id] => 10
-                    [hely_id] => 21
-                    [szolgtipus_id] => 5
-                    [datum] => 2010-04-07
-                    [szolgalat] => galyazás
-                    [ora] => 2.00
-                    [termeny_id] => 1
-                    [mennyiseg] => 
-                    [mennyisegiegyseg_id] => 1
-                    [felhasznalt] => 
+		[0] => Array
+        (
+            [Naplo] => Array
+                (
+                    [id] => 289
+                    [munkas_id] => 2
+                    [hely_id] => 2
+                    [datum] => 2012-01-27
+                    [szolgalat] => válogatás
+                    [ora] => 0.50
+                    [termeny_id] => 27
                     [koltseg] => 
-                    [vevo_id] => 1
-                    [megjegyzes] => )
-            [helyek] => Array(
-                    [id] => 21
-                    [hely] => kert)
-            [munkasok] => Array(
-                    [id] => 10
-                    [munkas] => Jayanta d.
-                    [oradij] => 500)
-            [szolgtipusok] => Array(
-                    [id] => 5
-                    [szolgalattipus] => egyéb)
-            [termenyek] => Array(
-                    [id] => 1
-                    [termeny] =>  -)
-            [vevok] => Array(
-                    [id] => 1
-                    [vevo] =>  -)
-            [mennyisegiegysegek] => Array(
-                    [id] => 1
-                    [mennyisegiegyseg] =>  -)
+                    [megjegyzes] => 
+                )
+            [Munkas] => Array
+                (
+                    [id] => 2
+                    [munkas] => Sasi Sekhara d
+                    [oradij] => 550
+                )
+            [Hely] => Array
+                (
+                    [id] => 2
+                    [hely] => Pince
+                )
+            [Termeny] => Array
+                (
+                    [id] => 27
+                    [termeny] => Sütőtök
+                )
         )
 		*/
 		print '<table>';
 			print '<tr>';
-				print '<th>' . 'Munkás' . '</th>';
-				print '<th>' . 'Hely' . '</th>';
-				print '<th>' . 'Dátum' . '</th>';
-				print '<th>' . 'Szolgálat' . '</th>';
-				print '<th>' . 'Idő' . '</th>';
-				print '<th>' . 'Termény' . '</th>';
+				print '<th>' . $paginator->sort('Munkás', 'Munkas.munkas') . '</th>';
+				print '<th>' . $paginator->sort('Hely', 'Hely.hely') . '</th>';
+				print '<th>' . $paginator->sort('Dátum', 'Naplo.datum') . '</th>';
+				print '<th>' . $paginator->sort('Szolgálat', 'Naplo.szolgalat') . '</th>';
+				print '<th>' . $paginator->sort('Idő', 'Naplo.ora') . '</th>';
+				print '<th>' . $paginator->sort('Termény', 'Termeny.termeny') . '</th>';
 				print '<th>' . 'Óra költség' . '</th>';
-				print '<th>' . 'Megjegyzés' . '</th>';
+				print '<th>' . $paginator->sort('Megjegyzés', 'Naplo.megjegyzes') . '</th>';
 				print '<th>' . 'Eszközök' . '</th>';
 			print '</tr>';
 			
 			$osszes = array('ora' => 0, 'ktg' => 0, 'oraKtg' => 0, 'osszKtg' => 0);
 			foreach($eredmeny as $i => $e){
-				$oraKtg = $e['naplok']['ora'] * $e['munkasok']['oradij'];
-				$osszKtg = $oraKtg + $e['naplok']['koltseg'];
-				$osszes['ora'] += $e['naplok']['ora'];
-				$osszes['ktg'] += $e['naplok']['koltseg'];
+				$oraKtg = $e['Naplo']['ora'] * $e['Munkas']['oradij'];
+				$osszKtg = $oraKtg + $e['Naplo']['koltseg'];
+				$osszes['ora'] += $e['Naplo']['ora'];
+				$osszes['ktg'] += $e['Naplo']['koltseg'];
 				$osszes['oraKtg'] += $oraKtg;
 				$osszes['osszKtg'] += $osszKtg;
 				print '<tr' . (($i%2)?' class="altrow"':'') . '>';
-					print '<td>' . $e['munkasok']['munkas'] . '</td>';
-					print '<td>' . $e['helyek']['hely'] . '</td>';
-					print '<td>' . $e['naplok']['datum'] . '</td>';
-					print '<td>' . $e['naplok']['szolgalat'] . '</td>';
-					print '<td>' . $e['naplok']['ora'] . '</td>';
-					print '<td>' . $e['termenyek']['termeny'] . '</td>';
+					print '<td>' . $e['Munkas']['munkas'] . '</td>';
+					print '<td>' . $e['Hely']['hely'] . '</td>';
+					print '<td>' . $e['Naplo']['datum'] . '</td>';
+					print '<td>' . $e['Naplo']['szolgalat'] . '</td>';
+					print '<td>' . $e['Naplo']['ora'] . '</td>';
+					print '<td>' . $e['Termeny']['termeny'] . '</td>';
 					print '<td>' . number_format($oraKtg, 0, '', '.') . '</td>';
-					print '<td>' . $e['naplok']['megjegyzes'] . '</td>';
+					print '<td>' . $e['Naplo']['megjegyzes'] . '</td>';
 					print '<td class="actions">';
-						echo $html->link(__('Muti', true), array('action' => 'view', $e['naplok']['id']));
-						echo $html->link(__('Szerk', true), array('action' => 'edit', $e['naplok']['id']));
-						echo $html->link(__('Del', true), array('action' => 'delete', $e['naplok']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $e['naplok']['id']));
+						echo $html->link(__('Muti', true), array('action' => 'view', $e['Naplo']['id']));
+						echo $html->link(__('Szerk', true), array('action' => 'edit', $e['Naplo']['id']));
+						echo $html->link(__('Del', true), array('action' => 'delete', $e['Naplo']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $e['Naplo']['id']));
 					print '</td>';
 				print '</tr>';
 			}
@@ -131,6 +119,11 @@ print $javascript->link('kert.lekerdezes.js', false);
 				print '<td></td>';
 			print '</tr>';
 		print '</table>';
+		
+		echo $paginator->numbers();
+		echo $paginator->prev('« Previous ', null, null, array('class' => 'disabled'));
+		echo $paginator->next(' Next »', null, null, array('class' => 'disabled'));
+		echo $paginator->counter();
 	}
 ?>
 </div>
