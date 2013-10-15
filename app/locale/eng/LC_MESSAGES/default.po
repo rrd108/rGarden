@@ -1,0 +1,284 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NVDkert\n"
+"POT-Creation-Date: 2013-10-15 12:28+0100\n"
+"PO-Revision-Date: 2013-10-15 12:28+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: /home/rrd/public_html/nvdkert/app\n"
+
+#: /home/rrd/public_html/nvdkert/app/controllers/naplok_controller.php:20
+#: /home/rrd/public_html/nvdkert/app/controllers/naplok_controller.php:85
+msgid "Invalid Naplo"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/controllers/naplok_controller.php:39
+msgid "Új munkásként hozzáadva: "
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/controllers/naplok_controller.php:48
+msgid "Új helyként hozzáadva: "
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/controllers/naplok_controller.php:57
+msgid "Új terményként hozzáadva: "
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/controllers/naplok_controller.php:74
+msgid "A naplót nem sikerült menteni"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/controllers/naplok_controller.php:95
+msgid "The Naplo has been saved"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/controllers/naplok_controller.php:98
+msgid "The Naplo could not be saved. Please, try again."
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/controllers/naplok_controller.php:112
+msgid "Invalid id for Naplo"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/controllers/naplok_controller.php:116
+msgid "Naplo deleted"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/controllers/naplok_controller.php:119
+msgid "The Naplo could not be deleted. Please, try again."
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/webroot/test.php:98
+msgid "Debug setting does not allow access to this url."
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:2
+msgid "Naplo"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:4
+msgid "Munkas"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:9
+#: /home/rrd/public_html/nvdkert/app/views/naplok/lekerdezes.ctp:76
+#: /home/rrd/public_html/nvdkert/app/views/naplok/add.ctp:28
+#: /home/rrd/public_html/nvdkert/app/views/naplok/edit.ctp:27
+msgid "Hely"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:14
+msgid "Szolgtipus"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:19
+msgid "Datum"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:24
+msgid "Szolgalat"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:29
+msgid "Ora"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:34
+msgid "Termeny"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:39
+msgid "Mennyiseg"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:44
+msgid "Mennyiségi egység"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:49
+msgid "Felhasznalt"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:54
+msgid "Koltseg"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:59
+msgid "Vevo"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:64
+msgid "Megjegyzes"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:73
+#: /home/rrd/public_html/nvdkert/app/views/naplok/index.ctp:80
+#: /home/rrd/public_html/nvdkert/app/views/naplok/add.ctp:8
+#: /home/rrd/public_html/nvdkert/app/views/naplok/add.ctp:73
+#: /home/rrd/public_html/nvdkert/app/views/naplok/edit.ctp:65
+#: /home/rrd/public_html/nvdkert/app/views/pages/home.ctp:4
+#: /home/rrd/public_html/nvdkert/app/views/layouts/default.ctp:28
+msgid "Új naplóbejegyzés"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:74
+#: /home/rrd/public_html/nvdkert/app/views/naplok/index.ctp:81
+#: /home/rrd/public_html/nvdkert/app/views/naplok/add.ctp:74
+#: /home/rrd/public_html/nvdkert/app/views/naplok/edit.ctp:66
+#: /home/rrd/public_html/nvdkert/app/views/pages/home.ctp:5
+#: /home/rrd/public_html/nvdkert/app/views/layouts/default.ctp:29
+msgid "Naplóbejegyzések"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:75
+#: /home/rrd/public_html/nvdkert/app/views/naplok/index.ctp:82
+#: /home/rrd/public_html/nvdkert/app/views/naplok/add.ctp:75
+#: /home/rrd/public_html/nvdkert/app/views/naplok/edit.ctp:67
+#: /home/rrd/public_html/nvdkert/app/views/pages/home.ctp:11
+msgid "Munkások"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:76
+#: /home/rrd/public_html/nvdkert/app/views/naplok/index.ctp:83
+#: /home/rrd/public_html/nvdkert/app/views/naplok/add.ctp:76
+#: /home/rrd/public_html/nvdkert/app/views/naplok/edit.ctp:68
+#: /home/rrd/public_html/nvdkert/app/views/pages/home.ctp:12
+msgid "Helyek"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/view.ctp:77
+#: /home/rrd/public_html/nvdkert/app/views/naplok/index.ctp:84
+#: /home/rrd/public_html/nvdkert/app/views/naplok/add.ctp:77
+#: /home/rrd/public_html/nvdkert/app/views/naplok/edit.ctp:69
+#: /home/rrd/public_html/nvdkert/app/views/pages/home.ctp:13
+msgid "Termények"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/index.ctp:2
+msgid "Naplók"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/index.ctp:6
+msgid ""
+"Page %page% of %pages%, showing %current% records out of %count% total, "
+"starting on record %start%, ending on %end%"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/index.ctp:12
+#: /home/rrd/public_html/nvdkert/app/views/naplok/index.ctp:74
+msgid "previous"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/index.ctp:14
+#: /home/rrd/public_html/nvdkert/app/views/naplok/index.ctp:76
+msgid "next"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/index.ctp:29
+msgid "Actions"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/index.ctp:65
+#: /home/rrd/public_html/nvdkert/app/views/naplok/lekerdezes.ctp:104
+msgid "Muti"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/index.ctp:66
+#: /home/rrd/public_html/nvdkert/app/views/naplok/lekerdezes.ctp:105
+msgid "Szerk"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/index.ctp:67
+#: /home/rrd/public_html/nvdkert/app/views/naplok/lekerdezes.ctp:106
+msgid "Del"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/index.ctp:67
+#: /home/rrd/public_html/nvdkert/app/views/naplok/lekerdezes.ctp:106
+#, php-format
+msgid "Are you sure you want to delete # %s?"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/lekerdezes.ctp:9
+msgid "Lekérdezés"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/lekerdezes.ctp:11
+#: /home/rrd/public_html/nvdkert/app/views/naplok/lekerdezes.ctp:13
+msgid " --- válassz --- "
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/lekerdezes.ctp:16
+#: /home/rrd/public_html/nvdkert/app/views/naplok/lekerdezes.ctp:78
+#: /home/rrd/public_html/nvdkert/app/views/naplok/add.ctp:51
+#: /home/rrd/public_html/nvdkert/app/views/naplok/edit.ctp:51
+msgid "Szolgálat"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/lekerdezes.ctp:22
+#: /home/rrd/public_html/nvdkert/app/views/naplok/lekerdezes.ctp:80
+#: /home/rrd/public_html/nvdkert/app/views/naplok/add.ctp:40
+#: /home/rrd/public_html/nvdkert/app/views/naplok/edit.ctp:39
+msgid "Termény"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/lekerdezes.ctp:75
+msgid "Munkás"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/lekerdezes.ctp:77
+msgid "Dátum"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/lekerdezes.ctp:79
+msgid "Idő"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/lekerdezes.ctp:82
+msgid "Megjegyzés"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/lekerdezes.ctp:111
+msgid "Összesen"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/add.ctp:9
+#: /home/rrd/public_html/nvdkert/app/views/naplok/edit.ctp:8
+msgid "Összes költség"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/add.ctp:9
+#: /home/rrd/public_html/nvdkert/app/views/naplok/edit.ctp:8
+msgid "Ft"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/add.ctp:13
+#: /home/rrd/public_html/nvdkert/app/views/naplok/edit.ctp:13
+msgid "Munkavégző"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/naplok/edit.ctp:7
+msgid "Naplóbejegyzés szerkesztése"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/pages/home.ctp:6
+#: /home/rrd/public_html/nvdkert/app/views/layouts/default.ctp:30
+msgid "Lekérdezések"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/layouts/default.ctp:6
+#: /home/rrd/public_html/nvdkert/app/views/layouts/default.ctp:27
+msgid "Kertészeti nyilvántartó"
+msgstr ""
+
+#: /home/rrd/public_html/nvdkert/app/views/layouts/default.ctp:43
+msgid "CakePHP: the rapid development php framework"
+msgstr ""
