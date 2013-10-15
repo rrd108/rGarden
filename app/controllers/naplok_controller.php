@@ -36,7 +36,7 @@ class NaplokController extends AppController {
 				$this->Naplo->Munkas->create();
 				$this->Naplo->Munkas->save($this->data);
 				$this->data['Naplo']['munkas_id'] = $this->Naplo->Munkas->id;
-				$ujTorzs .= 'Új munkásként hozzáadva: ' . $munkas . '<br>';
+				$ujTorzs .= __('Új munkásként hozzáadva: ', true) . $munkas . '<br>';
 			}
 			
 			//ha van új hely, akkor azt létre kell hozni
@@ -45,7 +45,7 @@ class NaplokController extends AppController {
 				$this->Naplo->Hely->create();
 				$this->Naplo->Hely->save($this->data);
 				$this->data['Naplo']['hely_id'] = $this->Naplo->Hely->id;
-				$ujTorzs .= 'Új helyként hozzáadva: ' . $this->data['Hely']['hely'] . '<br>';
+				$ujTorzs .= __('Új helyként hozzáadva: ', true) . $this->data['Hely']['hely'] . '<br>';
 			}
 			
 			//ha van új termény akkor azt létre kell hozni
@@ -54,7 +54,7 @@ class NaplokController extends AppController {
 				$this->Naplo->Termeny->create();
 				$this->Naplo->Termeny->save($this->data);
 				$this->data['Naplo']['termeny_id'] = $this->Naplo->Termeny->id;
-				$ujTorzs .= 'Új terményként hozzáadva: ' . $this->data['Termeny']['termeny'] . '<br>';
+				$ujTorzs .= __('Új terményként hozzáadva: ', true) . $this->data['Termeny']['termeny'] . '<br>';
 			}
 			
 			$this->data['Naplo']['ora'] = str_replace(',', '.', $this->data['Naplo']['ora']);
@@ -71,7 +71,7 @@ class NaplokController extends AppController {
 													'megjegyzes' => false
 													);
 			} else {
-				$this->Session->setFlash($ujTorzs . 'A naplót nem sikerült menteni');
+				$this->Session->setFlash($ujTorzs . __('A naplót nem sikerült menteni', true));
 			}
 		}
 		

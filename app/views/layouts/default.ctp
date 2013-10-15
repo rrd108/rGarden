@@ -24,7 +24,7 @@
 		<div id="header">
 			<h1>
 				<?php
-					echo $html->link('Kertészeti nyilvántartó', '/');
+					echo $html->link(__('Kertészeti nyilvántartó', true), '/');
 					echo ' | ' . $html->link(__('Új naplóbejegyzés', true), array('controller' => 'naplok', 'action' => 'add'));
 					echo ' | ' . $html->link(__('Naplóbejegyzések', true), array('controller' => 'naplok', 'action' => 'index'));
 					echo ' | ' . $html->link(__('Lekérdezések', true), array('controller' => 'naplok', 'action' => 'lekerdezes'));

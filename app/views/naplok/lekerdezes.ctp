@@ -8,18 +8,18 @@ if($paginator)
 	<fieldset>
  		<legend><?php __('Lekérdezés');?></legend>
 	<?php
-		echo $form->input('munkas_id', array('empty' => ' --- válassz --- '));
+		echo $form->input('munkas_id', array('empty' => __(' --- válassz --- ', true)));
 
-		echo $form->input('hely_id', array('empty' => ' --- válassz --- '));
+		echo $form->input('hely_id', array('empty' => __(' --- válassz --- ', true)));
 
 		print '<div class="input required">';
-			print $form->label('Szolgalat', 'Szolgálat');
+			print $form->label('Szolgalat', __('Szolgálat', true));
 			print $ajax->autoComplete('szolgalat',
 											'/naplok/searchSzolgalat');
 		print '</div>';
 		
 		print '<div class="input required">';
-			print $form->label('Termeny', 'Termény');
+			print $form->label('Termeny', __('Termény', true));
 			print $ajax->autoComplete('NaploTermeny',
 											'/termenyek/searchTermeny',
 											array(
@@ -72,14 +72,14 @@ if($paginator)
 		*/
 		print '<table>';
 			print '<tr>';
-				print '<th>' . $paginator->sort('Munkás', 'Munkas.munkas') . '</th>';
-				print '<th>' . $paginator->sort('Hely', 'Hely.hely') . '</th>';
-				print '<th>' . $paginator->sort('Dátum', 'Naplo.datum') . '</th>';
-				print '<th>' . $paginator->sort('Szolgálat', 'Naplo.szolgalat') . '</th>';
-				print '<th>' . $paginator->sort('Idő', 'Naplo.ora') . '</th>';
-				print '<th>' . $paginator->sort('Termény', 'Termeny.termeny') . '</th>';
+				print '<th>' . $paginator->sort(__('Munkás', true), 'Munkas.munkas') . '</th>';
+				print '<th>' . $paginator->sort(__('Hely', true), 'Hely.hely') . '</th>';
+				print '<th>' . $paginator->sort(__('Dátum', true), 'Naplo.datum') . '</th>';
+				print '<th>' . $paginator->sort(__('Szolgálat', true), 'Naplo.szolgalat') . '</th>';
+				print '<th>' . $paginator->sort(__('Idő', true), 'Naplo.ora') . '</th>';
+				print '<th>' . $paginator->sort(__('Termény', true), 'Termeny.termeny') . '</th>';
 				print '<th>' . 'Óra költség' . '</th>';
-				print '<th>' . $paginator->sort('Megjegyzés', 'Naplo.megjegyzes') . '</th>';
+				print '<th>' . $paginator->sort(__('Megjegyzés', true), 'Naplo.megjegyzes') . '</th>';
 				print '<th>' . 'Eszközök' . '</th>';
 			print '</tr>';
 			
@@ -108,7 +108,7 @@ if($paginator)
 				print '</tr>';
 			}
 			print '<tr class="b">';
-				print '<td>Összesen</td>';
+				print '<td>' . __('Összesen', true) . '</td>';
 				print '<td></td>';
 				print '<td></td>';
 				print '<td></td>';

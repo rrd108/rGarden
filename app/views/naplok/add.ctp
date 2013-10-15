@@ -6,11 +6,11 @@ print $javascript->link('kert.naplo.js', false);
 <?php echo $form->create('Naplo');?>
 	<fieldset>
  		<legend><?php __('Új naplóbejegyzés');?></legend>
-		<h2><?php print 'Összes költség: <span id="osszktg">0</span> Ft'; ?></h2>
+		<h2><?php print __('Összes költség', true) . ': <span id="osszktg">0</span> ' . __('Ft', true); ?></h2>
 	<?php
 		//echo $form->input('munkas_id', array('empty' => ' --- válassz --- '));
 		print '<div class="input required">';
-			print $form->label('munkas', 'Munkavégző');
+			print $form->label('munkas', __('Munkavégző', true));
 			print $ajax->autoComplete('NaploMunkas',
 											'/munkasok/searchMunkas',
 											array(
@@ -25,7 +25,7 @@ print $javascript->link('kert.naplo.js', false);
 
 		//echo $form->input('hely_id', array('empty' => ' --- válassz --- '));
 		print '<div class="input required">';
-			print $form->label('hely', 'Hely');
+			print $form->label('hely', __('Hely', true));
 			print $ajax->autoComplete('NaploHely',
 											'/helyek/searchHely',
 											array(
@@ -37,7 +37,7 @@ print $javascript->link('kert.naplo.js', false);
 
 		//echo $form->input('termeny_id');
 		print '<div class="input required">';
-			print $form->label('termeny', 'Termény');
+			print $form->label('termeny', __('Termény', true));
 			print $ajax->autoComplete('NaploTermeny',
 											'/termenyek/searchTermeny',
 											array(
@@ -48,7 +48,7 @@ print $javascript->link('kert.naplo.js', false);
 		print $form->input('termeny_id', array('type' => 'hidden', 'value' => 1));
 		
 		print '<div class="input required">';
-			print $form->label('Szolgalat', 'Szolgálat');
+			print $form->label('Szolgalat', __('Szolgálat', true));
 			print $ajax->autoComplete('szolgalat',
 											'/naplok/searchSzolgalat');
 		print '</div>';

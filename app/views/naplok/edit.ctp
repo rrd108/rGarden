@@ -4,13 +4,13 @@ print $javascript->link('kert.naplo.js', false);
 <div class="naplok form">
 <?php echo $form->create('Naplo');?>
 	<fieldset>
- 		<legend><?php print 'Naplóbejegyzés szerkesztése'; ?></legend>
-		<h2><?php print 'Összes költség: <span id="osszktg">' . number_format(($this->data['Naplo']['ora']*$this->data['Munkas']['oradij'])+$this->data['Naplo']['koltseg'], 0, ',', '.') . '</span> Ft'; ?></h2>
+ 		<legend><?php print __('Naplóbejegyzés szerkesztése', true); ?></legend>
+		<h2><?php print __('Összes költség', true) . ': <span id="osszktg">' . number_format(($this->data['Naplo']['ora']*$this->data['Munkas']['oradij'])+$this->data['Naplo']['koltseg'], 0, ',', '.') . '</span> ' . __('Ft', true); ?></h2>
 	<?php
 		print $form->input('p', array('type' => 'hidden', 'value' => $p));
 		echo $form->input('id');
 		print '<div class="input required">';
-			print $form->label('munkas', 'Munkavégző');
+			print $form->label('munkas', __('Munkavégző', true));
 			print $ajax->autoComplete('NaploMunkas',
 											'/munkasok/searchMunkas',
 											array(
@@ -24,7 +24,7 @@ print $javascript->link('kert.naplo.js', false);
 		echo $form->input('datum', array('type' => 'text'));
 		
 		print '<div class="input required">';
-			print $form->label('hely', 'Hely');
+			print $form->label('hely', __('Hely', true));
 			print $ajax->autoComplete('NaploHely',
 											'/helyek/searchHely',
 											array(
@@ -36,7 +36,7 @@ print $javascript->link('kert.naplo.js', false);
 		print $form->input('hely_id', array('type' => 'hidden'));
 		
 		print '<div class="input required">';
-			print $form->label('termeny', 'Termény');
+			print $form->label('termeny', __('Termény', true));
 			print $ajax->autoComplete('NaploTermeny',
 											'/termenyek/searchTermeny',
 											array(
@@ -48,7 +48,7 @@ print $javascript->link('kert.naplo.js', false);
 		print $form->input('termeny_id', array('type' => 'hidden'));
 		
 		print '<div class="input required">';
-			print $form->label('Szolgalat', 'Szolgálat');
+			print $form->label('Szolgalat', __('Szolgálat', true));
 			print $ajax->autoComplete('szolgalat',
 											'/naplok/searchSzolgalat');
 		print '</div>';
