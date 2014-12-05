@@ -1,3 +1,0 @@
-2010-09-28 13:26:03 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/naplok/lekerdezes.ctp, line 83]
-2010-09-28 13:29:29 Warning: Warning (2): number_format() expects parameter 2 to be long, string given in [APP/views/naplok/lekerdezes.ctp, line 93]
-2010-09-28 13:48:39 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 8</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 527]

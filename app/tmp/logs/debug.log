@@ -1,8 +1,0 @@
-2010-09-28 13:26:03 Notice: Notice (8): Undefined variable: erdemeny in [APP/views/naplok/lekerdezes.ctp, line 83]
-2010-09-28 13:26:22 Notice: Notice (8): Undefined index: szolgalat in [APP/views/naplok/lekerdezes.ctp, line 87]
-2010-09-28 13:40:01 Notice: Notice (8): Undefined index: koltseg in [APP/views/naplok/lekerdezes.ctp, line 114]
-2010-09-28 13:49:11 Notice: Notice (8): Undefined variable: eredmeny in [APP/views/naplok/lekerdezes.ctp, line 27]
-2010-09-28 13:53:59 Notice: Notice (8): Undefined variable: eredmeny in [APP/views/naplok/lekerdezes.ctp, line 27]
-2010-09-28 13:54:36 Notice: Notice (8): Undefined variable: eredmeny in [APP/views/naplok/lekerdezes.ctp, line 27]
-2010-09-28 14:06:55 Notice: Notice (8): Undefined variable: eredmeny in [APP/views/naplok/lekerdezes.ctp, line 27]
-2010-09-28 14:16:05 Notice: Notice (8): Undefined variable: eredmeny in [APP/views/naplok/lekerdezes.ctp, line 27]

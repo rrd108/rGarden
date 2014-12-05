@@ -1,6 +1,6 @@
 <?php
 print $javascript->link('kert.lekerdezes.js', false);
-if($paginator)
+if(isset($paginator))
 	$paginator->options(array('url' => $this->passedArgs));
 ?>
 <div class="naplok form">

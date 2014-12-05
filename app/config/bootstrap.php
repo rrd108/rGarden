@@ -41,4 +41,17 @@
  *
  */
 //EOF
+
+Inflector::rules('plural', array(
+    'irregular' => array(
+		'vevo'				=> 'vevok',
+		'hely'				=> 'helyek',
+		'naplo'				=> 'naplok',
+		'szolgtipus'		=> 'szolgtipusok',
+		'termeny'			=> 'termenyek',
+		'munkas'				=> 'munkasok',
+		'mennyisegiegyseg'=> 'mennyisegiegysegek'
+						 )
+));
+
 ?>

@@ -1,27 +1,23 @@
 <?php
-/* SVN FILE: $Id$ */
 /**
  * CacheHelper helps create full page view caching.
  *
  * PHP versions 4 and 5
  *
- * CakePHP(tm) :  Rapid Development Framework (http://www.cakephp.org)
- * Copyright 2005-2010, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @filesource
- * @copyright     Copyright 2005-2010, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
- * @link          http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org CakePHP(tm) Project
  * @package       cake
  * @subpackage    cake.cake.libs.view.helpers
  * @since         CakePHP(tm) v 1.0.0.2277
- * @version       $Revision$
- * @modifiedby    $LastChangedBy$
- * @lastmodified  $Date$
- * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
+ * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
+
 /**
  * CacheHelper helps create full page view caching.
  *
@@ -30,8 +26,10 @@
  *
  * @package       cake
  * @subpackage    cake.cake.libs.view.helpers
+ * @link http://book.cakephp.org/view/1376/Cache
  */
 class CacheHelper extends AppHelper {
+
 /**
  * Array of strings replaced in cached views.
  * The strings are found between <cake:nocache><cake:nocache> in views
@@ -40,6 +38,7 @@ class CacheHelper extends AppHelper {
  * @access private
  */
 	var $__replace = array();
+
 /**
  * Array of string that are replace with there var replace above.
  * The strings are any content inside <cake:nocache><cake:nocache> and includes the tags in views
@@ -48,6 +47,7 @@ class CacheHelper extends AppHelper {
  * @access private
  */
 	var $__match = array();
+
 /**
  * cache action time
  *
@@ -55,100 +55,78 @@ class CacheHelper extends AppHelper {
  * @access public
  */
 	var $cacheAction;
+
+/**
+ * Counter used for counting nocache section tags.
+ *
+ * @var integer
+ */
+	var $_counter = 0;
+
 /**
  * Main method used to cache a view
  *
  * @param string $file File to cache
  * @param string $out output to cache
- * @param boolean $cache
- * @return view ouput
+ * @param boolean $cache Whether or not a cache file should be written.
+ * @return string view ouput
  */
 	function cache($file, $out, $cache = false) {
 		$cacheTime = 0;
 		$useCallbacks = false;
 		if (is_array($this->cacheAction)) {
-			$controller = Inflector::underscore($this->controllerName);
-			$controllerAlternate = Inflector::variable($this->controllerName);
-
-			$check = str_replace('/', '_', $this->here);
-			$basePath = str_replace('/', '_', $this->base);
-
-			$match = str_replace($this->base, '', $this->here);
-			$match = str_replace('//', '/', $match);
-			$match = str_replace('/' . $controller . '/', '', $match);
-			$match = str_replace('/' . $controllerAlternate . '/', '', $match);
-			$match = str_replace('/' . $this->controllerName . '/', '', $match);
-
-			$check = str_replace($basePath, '', $check);
-			$check = str_replace('_' . $controller . '_', '', $check);
-			$check = str_replace('_' . $this->controllerName . '_', '', $check);
-			$check = str_replace('_' . $controllerAlternate . '_', '', $match);
-
-			$check = Inflector::slug($check);
-			$check = trim($check, '_');
-
-			$keys = str_replace('/', '_', array_keys($this->cacheAction));
-			$found = array_keys($this->cacheAction);
+			$keys = array_keys($this->cacheAction);
 			$index = null;
-			$count = 0;
 
-			foreach ($keys as $key => $value) {
-				if (strpos($check, rtrim($value, '_')) === 0) {
-					$index = $found[$count];
+			foreach ($keys as $action) {
+				if ($action == $this->params['action']) {
+					$index = $action;
 					break;
 				}
-				$count++;
 			}
 
-			if (isset($index)) {
-				$pos1 = strrpos($match, '/');
-				$char = strlen($match) - 1;
-
-				if ($pos1 == $char) {
-					$match = substr($match, 0, $char);
-				}
-
-				$key = $match;
-			} elseif ($this->action == 'index') {
+			if (!isset($index) && $this->action == 'index') {
 				$index = 'index';
 			}
 
 			$options = $this->cacheAction;
 			if (isset($this->cacheAction[$index])) {
 				if (is_array($this->cacheAction[$index])) {
-					$options = array_merge(array('duration'=> 0, 'callbacks' => false), $this->cacheAction[$index]);
+					$options = array_merge(array('duration' => 0, 'callbacks' => false), $this->cacheAction[$index]);
 				} else {
 					$cacheTime = $this->cacheAction[$index];
 				}
 			}
-
-			if (array_key_exists('duration', $options)) {
+			if (isset($options['duration'])) {
 				$cacheTime = $options['duration'];
 			}
-			if (array_key_exists('callbacks', $options)) {
+			if (isset($options['callbacks'])) {
 				$useCallbacks = $options['callbacks'];
 			}
-
 		} else {
 			$cacheTime = $this->cacheAction;
 		}
 
 		if ($cacheTime != '' && $cacheTime > 0) {
+			$out = preg_replace_callback('/<cake\:nocache>/', array($this, '_replaceSection'), $out);
+
 			$this->__parseFile($file, $out);
 			if ($cache === true) {
 				$cached = $this->__parseOutput($out);
 				$this->__writeFile($cached, $cacheTime, $useCallbacks);
+				$out = $this->_stripTags($out);
 			}
 			return $out;
 		} else {
 			return $out;
 		}
 	}
+
 /**
  * Parse file searching for no cache tags
  *
- * @param string $file
- * @param boolean $cache
+ * @param string $file The filename that needs to be parsed.
+ * @param string $cache The cached content
  * @access private
  */
 	function __parseFile($file, $cache) {
@@ -157,7 +135,8 @@ class CacheHelper extends AppHelper {
 		} elseif ($file = fileExistsInPath($file)) {
 			$file = file_get_contents($file);
 		}
-		preg_match_all('/(<cake:nocache>(?<=<cake:nocache>)[\\s\\S]*?(?=<\/cake:nocache>)<\/cake:nocache>)/i', $cache, $outputResult, PREG_PATTERN_ORDER);
+
+		preg_match_all('/(<cake:nocache:\d{3}>(?<=<cake:nocache:\d{3}>)[\\s\\S]*?(?=<\/cake:nocache>)<\/cake:nocache>)/i', $cache, $outputResult, PREG_PATTERN_ORDER);
 		preg_match_all('/(?<=<cake:nocache>)([\\s\\S]*?)(?=<\/cake:nocache>)/i', $file, $fileResult, PREG_PATTERN_ORDER);
 		$fileResult = $fileResult[0];
 		$outputResult = $outputResult[0];
@@ -183,10 +162,35 @@ class CacheHelper extends AppHelper {
 			}
 		}
 	}
+
+/**
+ * Munges the output from a view with cache tags, and numbers the sections.
+ * This helps solve issues with empty/duplicate content.
+ *
+ * @param string $content The content to munge.
+ * @return string The content with cake:nocache tags replaced.
+ */
+	function _replaceSection($matches) {
+		$this->_counter += 1;
+		return sprintf('<cake:nocache:%03d>', $this->_counter);
+	}
+
+/**
+ * Strip cake:nocache tags from a string. Since View::render()
+ * only removes un-numbered nocache tags, remove all the numbered ones.
+ * This is the complement to _replaceSection.
+ *
+ * @param string $content String to remove tags from.
+ * @return string String with tags removed.
+ */
+	function _stripTags($content) {
+		return preg_replace('#<\/?cake\:nocache(\:\d{3})?>#', '', $content);
+	}
+
 /**
  * Parse the output and replace cache tags
  *
- * @param sting $cache
+ * @param string $cache Output to replace content in.
  * @return string with all replacements made to <cake:nocache><cake:nocache>
  * @access private
  */
@@ -215,12 +219,13 @@ class CacheHelper extends AppHelper {
 		}
 		return $cache;
 	}
+
 /**
  * Write a cached version of the file
  *
- * @param string $file
- * @param sting $timestamp
- * @return cached view
+ * @param string $content view content to write to a cache file.
+ * @param sting $timestamp Duration to set for cache file.
+ * @return boolean success of caching view.
  * @access private
  */
 	function __writeFile($content, $timestamp, $useCallbacks = false) {
@@ -259,13 +264,12 @@ class CacheHelper extends AppHelper {
 				$controller->base = $this->base = \'' . $this->base . '\';
 				$controller->layout = $this->layout = \'' . $this->layout. '\';
 				$controller->webroot = $this->webroot = \'' . $this->webroot . '\';
-				$controller->here = $this->here = \'' . $this->here . '\';
-				$controller->namedArgs  = $this->namedArgs  = \'' . $this->namedArgs . '\';
-				$controller->argSeparator = $this->argSeparator = \'' . $this->argSeparator . '\';
+				$controller->here = $this->here = \'' . addslashes($this->here) . '\';
 				$controller->params = $this->params = unserialize(stripslashes(\'' . addslashes(serialize($this->params)) . '\'));
 				$controller->action = $this->action = unserialize(\'' . serialize($this->action) . '\');
 				$controller->data = $this->data = unserialize(stripslashes(\'' . addslashes(serialize($this->data)) . '\'));
-				$controller->themeWeb = $this->themeWeb = \'' . $this->themeWeb . '\';
+				$controller->viewVars = $this->viewVars = unserialize(base64_decode(\'' . base64_encode(serialize($this->viewVars)) . '\'));
+				$controller->theme = $this->theme = \'' . $this->theme . '\';
 				Router::setRequestInfo(array($this->params, array(\'base\' => $this->base, \'webroot\' => $this->webroot)));';
 
 		if ($useCallbacks == true) {
@@ -273,7 +277,8 @@ class CacheHelper extends AppHelper {
 				$controller->constructClasses();
 				$controller->Component->initialize($controller);
 				$controller->beforeFilter();
-				$controller->Component->startup($controller);';
+				$controller->Component->startup($controller);
+				$this->params = $controller->params;';
 		}
 
 		$file .= '
@@ -283,11 +288,12 @@ class CacheHelper extends AppHelper {
 					$camelBackedHelper = Inflector::variable($helper);
 					${$camelBackedHelper} =& $loadedHelpers[$helper];
 					$this->loaded[$camelBackedHelper] =& ${$camelBackedHelper};
+					$this->{$helper} =& $loadedHelpers[$helper];
 				}
+				extract($this->viewVars, EXTR_SKIP);
 		?>';
 		$content = preg_replace("/(<\\?xml)/", "<?php echo '$1';?>",$content);
 		$file .= $content;
 		return cache('views' . DS . $cache, $file, $timestamp);
 	}
 }
-?>

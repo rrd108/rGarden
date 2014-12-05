@@ -1,7 +1,8 @@
 <?php
 class AppController extends Controller {
 
-	var $helpers = array('Html', 'Form', 'Javascript', 'Ajax');
+	var $helpers = array('Html', 'Form', 'Javascript', 'Ajax', 'Session');
+	var $components = array('Session');
 	
 	public function beforeFilter() {
 		$locale = Configure::read('Config.language');
