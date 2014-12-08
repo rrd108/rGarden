@@ -1,0 +1,270 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2014-12-08 19:00+0100\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/NaplokController.php:19;84
+msgid "Invalid Naplo"
+msgstr ""
+
+#: Controller/NaplokController.php:38
+msgid "Új munkásként hozzáadva: "
+msgstr ""
+
+#: Controller/NaplokController.php:47
+msgid "Új helyként hozzáadva: "
+msgstr ""
+
+#: Controller/NaplokController.php:56
+msgid "Új terményként hozzáadva: "
+msgstr ""
+
+#: Controller/NaplokController.php:73
+msgid "A naplót nem sikerült menteni"
+msgstr ""
+
+#: Controller/NaplokController.php:94
+msgid "The Naplo has been saved"
+msgstr ""
+
+#: Controller/NaplokController.php:97
+msgid "The Naplo could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/NaplokController.php:111
+msgid "Invalid id for Naplo"
+msgstr ""
+
+#: Controller/NaplokController.php:115
+msgid "Naplo deleted"
+msgstr ""
+
+#: Controller/NaplokController.php:118
+msgid "The Naplo could not be deleted. Please, try again."
+msgstr ""
+
+#: View/Layouts/default.ctp:6;27
+msgid "Kertészeti nyilvántartó"
+msgstr ""
+
+#: View/Layouts/default.ctp:28
+#: View/Naplok/add.ctp:8;73
+#: View/Naplok/edit.ctp:65
+#: View/Naplok/index.ctp:80
+#: View/Naplok/view.ctp:73
+#: View/Pages/home.ctp:4
+msgid "Új naplóbejegyzés"
+msgstr ""
+
+#: View/Layouts/default.ctp:29
+#: View/Naplok/add.ctp:74
+#: View/Naplok/edit.ctp:66
+#: View/Naplok/index.ctp:81
+#: View/Naplok/view.ctp:74
+#: View/Pages/home.ctp:5
+msgid "Naplóbejegyzések"
+msgstr ""
+
+#: View/Layouts/default.ctp:30
+#: View/Pages/home.ctp:6
+msgid "Lekérdezések"
+msgstr ""
+
+#: View/Naplok/add.ctp:9
+#: View/Naplok/edit.ctp:8
+msgid "Összes költség"
+msgstr ""
+
+#: View/Naplok/add.ctp:9
+#: View/Naplok/edit.ctp:8
+msgid "Ft"
+msgstr ""
+
+#: View/Naplok/add.ctp:13
+#: View/Naplok/edit.ctp:13
+msgid "Munkavégző"
+msgstr ""
+
+#: View/Naplok/add.ctp:28
+#: View/Naplok/edit.ctp:27
+#: View/Naplok/lekerdezes.ctp:76
+#: View/Naplok/view.ctp:9
+msgid "Hely"
+msgstr ""
+
+#: View/Naplok/add.ctp:40
+#: View/Naplok/edit.ctp:39
+#: View/Naplok/lekerdezes.ctp:22;80
+msgid "Termény"
+msgstr ""
+
+#: View/Naplok/add.ctp:51
+#: View/Naplok/edit.ctp:51
+#: View/Naplok/lekerdezes.ctp:16;78
+msgid "Szolgálat"
+msgstr ""
+
+#: View/Naplok/add.ctp:75
+#: View/Naplok/edit.ctp:67
+#: View/Naplok/index.ctp:82
+#: View/Naplok/view.ctp:75
+#: View/Pages/home.ctp:11
+msgid "Munkások"
+msgstr ""
+
+#: View/Naplok/add.ctp:76
+#: View/Naplok/edit.ctp:68
+#: View/Naplok/index.ctp:83
+#: View/Naplok/view.ctp:76
+#: View/Pages/home.ctp:12
+msgid "Helyek"
+msgstr ""
+
+#: View/Naplok/add.ctp:77
+#: View/Naplok/edit.ctp:69
+#: View/Naplok/index.ctp:84
+#: View/Naplok/view.ctp:77
+#: View/Pages/home.ctp:13
+msgid "Termények"
+msgstr ""
+
+#: View/Naplok/edit.ctp:7
+msgid "Naplóbejegyzés szerkesztése"
+msgstr ""
+
+#: View/Naplok/index.ctp:2
+#: View/Pages/home.ctp:2
+msgid "Naplók"
+msgstr ""
+
+#: View/Naplok/index.ctp:6
+msgid "Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%"
+msgstr ""
+
+#: View/Naplok/index.ctp:12;74
+msgid "previous"
+msgstr ""
+
+#: View/Naplok/index.ctp:14;76
+msgid "next"
+msgstr ""
+
+#: View/Naplok/index.ctp:29
+msgid "Actions"
+msgstr ""
+
+#: View/Naplok/index.ctp:65
+#: View/Naplok/lekerdezes.ctp:104
+msgid "Muti"
+msgstr ""
+
+#: View/Naplok/index.ctp:66
+#: View/Naplok/lekerdezes.ctp:105
+msgid "Szerk"
+msgstr ""
+
+#: View/Naplok/index.ctp:67
+#: View/Naplok/lekerdezes.ctp:106
+msgid "Del"
+msgstr ""
+
+#: View/Naplok/index.ctp:67
+#: View/Naplok/lekerdezes.ctp:106
+msgid "Are you sure you want to delete # %s?"
+msgstr ""
+
+#: View/Naplok/lekerdezes.ctp:9
+msgid "Lekérdezés"
+msgstr ""
+
+#: View/Naplok/lekerdezes.ctp:11;13
+msgid " --- válassz --- "
+msgstr ""
+
+#: View/Naplok/lekerdezes.ctp:75
+msgid "Munkás"
+msgstr ""
+
+#: View/Naplok/lekerdezes.ctp:77
+msgid "Dátum"
+msgstr ""
+
+#: View/Naplok/lekerdezes.ctp:79
+msgid "Idő"
+msgstr ""
+
+#: View/Naplok/lekerdezes.ctp:82
+msgid "Megjegyzés"
+msgstr ""
+
+#: View/Naplok/lekerdezes.ctp:111
+msgid "Összesen"
+msgstr ""
+
+#: View/Naplok/view.ctp:2
+msgid "Naplo"
+msgstr ""
+
+#: View/Naplok/view.ctp:4
+msgid "Munkas"
+msgstr ""
+
+#: View/Naplok/view.ctp:14
+msgid "Szolgtipus"
+msgstr ""
+
+#: View/Naplok/view.ctp:19
+msgid "Datum"
+msgstr ""
+
+#: View/Naplok/view.ctp:24
+msgid "Szolgalat"
+msgstr ""
+
+#: View/Naplok/view.ctp:29
+msgid "Ora"
+msgstr ""
+
+#: View/Naplok/view.ctp:34
+msgid "Termeny"
+msgstr ""
+
+#: View/Naplok/view.ctp:39
+msgid "Mennyiseg"
+msgstr ""
+
+#: View/Naplok/view.ctp:44
+msgid "Mennyiségi egység"
+msgstr ""
+
+#: View/Naplok/view.ctp:49
+msgid "Felhasznalt"
+msgstr ""
+
+#: View/Naplok/view.ctp:54
+msgid "Koltseg"
+msgstr ""
+
+#: View/Naplok/view.ctp:59
+msgid "Vevo"
+msgstr ""
+
+#: View/Naplok/view.ctp:64
+msgid "Megjegyzes"
+msgstr ""
+
+#: View/Pages/home.ctp:9
+msgid "Törzsadatok"
+msgstr ""
+
