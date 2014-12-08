@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2014-12-08 19:00+0100\n"
-"PO-Revision-Date: 2014-12-08 19:49+0100\n"
+"POT-Creation-Date: 2014-12-08 20:23+0100\n"
+"PO-Revision-Date: 2014-12-08 20:47+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: hu_HU\n"
@@ -60,14 +60,14 @@ msgstr "The Log could not be deleted. Please, try again."
 msgid "Kertészeti nyilvántartó"
 msgstr "Gardening Registry"
 
-#: View/Layouts/default.ctp:28 View/Naplok/add.ctp:8;73
-#: View/Naplok/edit.ctp:65 View/Naplok/index.ctp:80 View/Naplok/view.ctp:73
+#: View/Layouts/default.ctp:28 View/Naplok/add.ctp:7;74
+#: View/Naplok/edit.ctp:66 View/Naplok/index.ctp:87 View/Naplok/view.ctp:73
 #: View/Pages/home.ctp:4
 msgid "Új naplóbejegyzés"
 msgstr "New log entries"
 
-#: View/Layouts/default.ctp:29 View/Naplok/add.ctp:74 View/Naplok/edit.ctp:66
-#: View/Naplok/index.ctp:81 View/Naplok/view.ctp:74 View/Pages/home.ctp:5
+#: View/Layouts/default.ctp:29 View/Naplok/add.ctp:75 View/Naplok/edit.ctp:67
+#: View/Naplok/index.ctp:88 View/Naplok/view.ctp:74 View/Pages/home.ctp:5
 msgid "Naplóbejegyzések"
 msgstr "Log Entries"
 
@@ -75,44 +75,48 @@ msgstr "Log Entries"
 msgid "Lekérdezések"
 msgstr "Queries"
 
-#: View/Naplok/add.ctp:9 View/Naplok/edit.ctp:8
+#: View/Layouts/default.ctp:31
+msgid "Összköltség"
+msgstr "Total cost"
+
+#: View/Naplok/add.ctp:8 View/Naplok/edit.ctp:8
 msgid "Összes költség"
 msgstr "Total cost"
 
-#: View/Naplok/add.ctp:9 View/Naplok/edit.ctp:8
+#: View/Naplok/add.ctp:8 View/Naplok/edit.ctp:8
 msgid "Ft"
 msgstr "EUR"
 
-#: View/Naplok/add.ctp:13 View/Naplok/edit.ctp:13
+#: View/Naplok/add.ctp:12 View/Naplok/edit.ctp:14
 msgid "Munkavégző"
 msgstr "Worker"
 
-#: View/Naplok/add.ctp:28 View/Naplok/edit.ctp:27
-#: View/Naplok/lekerdezes.ctp:76 View/Naplok/view.ctp:9
+#: View/Naplok/add.ctp:29 View/Naplok/edit.ctp:28
+#: View/Naplok/lekerdezes.ctp:79 View/Naplok/view.ctp:9
 msgid "Hely"
 msgstr "Place"
 
-#: View/Naplok/add.ctp:40 View/Naplok/edit.ctp:39
-#: View/Naplok/lekerdezes.ctp:22;80
+#: View/Naplok/add.ctp:41 View/Naplok/edit.ctp:40
+#: View/Naplok/lekerdezes.ctp:25;83
 msgid "Termény"
 msgstr "Produce"
 
-#: View/Naplok/add.ctp:51 View/Naplok/edit.ctp:51
-#: View/Naplok/lekerdezes.ctp:16;78
+#: View/Naplok/add.ctp:52 View/Naplok/edit.ctp:52
+#: View/Naplok/lekerdezes.ctp:19;81
 msgid "Szolgálat"
 msgstr "Service"
 
-#: View/Naplok/add.ctp:75 View/Naplok/edit.ctp:67 View/Naplok/index.ctp:82
+#: View/Naplok/add.ctp:76 View/Naplok/edit.ctp:68 View/Naplok/index.ctp:89
 #: View/Naplok/view.ctp:75 View/Pages/home.ctp:11
 msgid "Munkások"
 msgstr "Workers"
 
-#: View/Naplok/add.ctp:76 View/Naplok/edit.ctp:68 View/Naplok/index.ctp:83
+#: View/Naplok/add.ctp:77 View/Naplok/edit.ctp:69 View/Naplok/index.ctp:90
 #: View/Naplok/view.ctp:76 View/Pages/home.ctp:12
 msgid "Helyek"
 msgstr "Places"
 
-#: View/Naplok/add.ctp:77 View/Naplok/edit.ctp:69 View/Naplok/index.ctp:84
+#: View/Naplok/add.ctp:78 View/Naplok/edit.ctp:70 View/Naplok/index.ctp:91
 #: View/Naplok/view.ctp:77 View/Pages/home.ctp:13
 msgid "Termények"
 msgstr "Crops"
@@ -133,11 +137,11 @@ msgstr ""
 "Page %page% of %pages%, showing %current% records out of %count% total, "
 "starting on record %start%, ending on %end%"
 
-#: View/Naplok/index.ctp:12;74
+#: View/Naplok/index.ctp:12;79
 msgid "previous"
 msgstr "Previous"
 
-#: View/Naplok/index.ctp:14;76
+#: View/Naplok/index.ctp:14;81
 msgid "next"
 msgstr "Next"
 
@@ -145,19 +149,19 @@ msgstr "Next"
 msgid "Actions"
 msgstr "Actions"
 
-#: View/Naplok/index.ctp:65 View/Naplok/lekerdezes.ctp:104
+#: View/Naplok/index.ctp:71 View/Naplok/lekerdezes.ctp:107
 msgid "Muti"
 msgstr "Show"
 
-#: View/Naplok/index.ctp:66 View/Naplok/lekerdezes.ctp:105
+#: View/Naplok/index.ctp:72 View/Naplok/lekerdezes.ctp:108
 msgid "Szerk"
 msgstr "Edit"
 
-#: View/Naplok/index.ctp:67 View/Naplok/lekerdezes.ctp:106
+#: View/Naplok/index.ctp:73 View/Naplok/lekerdezes.ctp:109
 msgid "Del"
 msgstr "Del"
 
-#: View/Naplok/index.ctp:67 View/Naplok/lekerdezes.ctp:106
+#: View/Naplok/index.ctp:73 View/Naplok/lekerdezes.ctp:109
 msgid "Are you sure you want to delete # %s?"
 msgstr "Are you sure you want to delete # %s?"
 
@@ -165,27 +169,27 @@ msgstr "Are you sure you want to delete # %s?"
 msgid "Lekérdezés"
 msgstr "Query"
 
-#: View/Naplok/lekerdezes.ctp:11;13
+#: View/Naplok/lekerdezes.ctp:12;15
 msgid " --- válassz --- "
 msgstr "--- Select ---"
 
-#: View/Naplok/lekerdezes.ctp:75
+#: View/Naplok/lekerdezes.ctp:78
 msgid "Munkás"
 msgstr "Worker"
 
-#: View/Naplok/lekerdezes.ctp:77
+#: View/Naplok/lekerdezes.ctp:80
 msgid "Dátum"
 msgstr "Date"
 
-#: View/Naplok/lekerdezes.ctp:79
+#: View/Naplok/lekerdezes.ctp:82
 msgid "Idő"
 msgstr "Time"
 
-#: View/Naplok/lekerdezes.ctp:82
+#: View/Naplok/lekerdezes.ctp:85
 msgid "Megjegyzés"
 msgstr "Comment"
 
-#: View/Naplok/lekerdezes.ctp:111
+#: View/Naplok/lekerdezes.ctp:114
 msgid "Összesen"
 msgstr "All"
 
