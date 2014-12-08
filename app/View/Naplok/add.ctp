@@ -1,6 +1,5 @@
 <?php
-print $this->Html->link('kert.naplo.js', false);
-
+print $this->Html->script('kert.naplo.js', false);
 ?>
 <div class="naplok form">
 <?php echo $this->Form->create('Naplo');?>
@@ -14,12 +13,14 @@ print $this->Html->link('kert.naplo.js', false);
 			print $this->autoComplete->create('NaploMunkas',
 											'/munkasok/searchMunkas',
 											array(
-												  'afterUpdateElement' => 'kert.naplo.munkashandler',
+												  'autocompleterOptions' => '{afterUpdateElement : kert.naplo.munkashandler}',
 												  'value' => isset($munkas) ? $munkas : ''
 												  )
 											);
 		print '</div>';
-		print $this->Form->input('munkas_id', array('type' => 'hidden', 'value' => $this->request->data['Naplo']['munkas_id']));
+		print $this->Form->input('munkas_id', array(
+													'type' => 'hidden',
+													'value' => isset($this->request->data['Naplo']['munkas_id']) ? $this->request->data['Naplo']['munkas_id'] : null));
 		
 		echo $this->Form->input('datum', array('type' => 'text'));
 
@@ -29,7 +30,7 @@ print $this->Html->link('kert.naplo.js', false);
 			print $this->autoComplete->create('NaploHely',
 											'/helyek/searchHely',
 											array(
-												  'afterUpdateElement' => 'kert.naplo.helyhandler'
+												  'autocompleterOptions' => '{afterUpdateElement : kert.naplo.helyhandler}'
 												  )
 											);
 		print '</div>';
@@ -41,7 +42,7 @@ print $this->Html->link('kert.naplo.js', false);
 			print $this->autoComplete->create('NaploTermeny',
 											'/termenyek/searchTermeny',
 											array(
-												  'afterUpdateElement' => 'kert.naplo.termenyhandler'
+												  'autocompleterOptions' => '{afterUpdateElement : kert.naplo.termenyhandler}'
 												  )
 											);
 		print '</div>';

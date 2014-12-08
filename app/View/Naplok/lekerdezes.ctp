@@ -1,5 +1,5 @@
 <?php
-print $javascript->link('kert.lekerdezes.js', false);
+print $this->Html->script('kert.lekerdezes.js', false);
 if(isset($paginator))
 	$this->Paginator->options(array('url' => $this->passedArgs));
 ?>
@@ -8,22 +8,25 @@ if(isset($paginator))
 	<fieldset>
  		<legend><?php echo __('Lekérdezés');?></legend>
 	<?php
-		echo $this->Form->input('munkas_id', array('empty' => __(' --- válassz --- ')));
+		echo $this->Form->input('munkas_id', array(
+												   'empty' => __(' --- válassz --- '),
+												  'required' => false));
 
-		echo $this->Form->input('hely_id', array('empty' => __(' --- válassz --- ')));
+		echo $this->Form->input('hely_id', array('empty' => __(' --- válassz --- '),
+												  'required' => false));
 
-		print '<div class="input required">';
+		print '<div class="input">';
 			print $this->Form->label('Szolgalat', __('Szolgálat'));
 			print $this->autoComplete->create('szolgalat',
 											'/naplok/searchSzolgalat');
 		print '</div>';
 		
-		print '<div class="input required">';
+		print '<div class="input">';
 			print $this->Form->label('Termeny', __('Termény'));
 			print $this->autoComplete->create('NaploTermeny',
 											'/termenyek/searchTermeny',
 											array(
-												'afterUpdateElement' => 'kert.lekerdezes.termenyhandler'
+												'autocompleterOptions' => '{afterUpdateElement :  kert.lekerdezes.termenyhandler}'
 											)
 											);
 		print '</div>';

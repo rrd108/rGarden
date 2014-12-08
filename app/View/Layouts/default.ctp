@@ -12,10 +12,10 @@
 		echo $this->Html->css('cake.generic');
 		print $this->Html->css('kert');
 		
-		print $javascript->link('prototype');
-		print $javascript->link('scriptaculous'); 
-		print $javascript->link('inputmask');
-		print $javascript->link('kert');
+		print $this->Html->script('prototype');
+		print $this->Html->script('scriptaculous'); 
+		print $this->Html->script('inputmask');
+		print $this->Html->script('kert');
 		echo $scripts_for_layout;
 	?>
 </head>
@@ -24,7 +24,7 @@
 		<div id="header">
 			<h1>
 				<?php
-					echo $this->Html->link(__('Kertészeti nyilvántartó'), '/');
+					echo $this->Html->link('rGarden' . ' ' . __('Kertészeti nyilvántartó'), '/');
 					echo ' | ' . $this->Html->link(__('Új naplóbejegyzés'), array('controller' => 'naplok', 'action' => 'add'));
 					echo ' | ' . $this->Html->link(__('Naplóbejegyzések'), array('controller' => 'naplok', 'action' => 'index'));
 					echo ' | ' . $this->Html->link(__('Lekérdezések'), array('controller' => 'naplok', 'action' => 'lekerdezes'));
