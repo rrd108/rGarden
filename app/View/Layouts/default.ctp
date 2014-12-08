@@ -28,6 +28,7 @@
 					echo ' | ' . $this->Html->link(__('Új naplóbejegyzés'), array('controller' => 'naplok', 'action' => 'add'));
 					echo ' | ' . $this->Html->link(__('Naplóbejegyzések'), array('controller' => 'naplok', 'action' => 'index'));
 					echo ' | ' . $this->Html->link(__('Lekérdezések'), array('controller' => 'naplok', 'action' => 'lekerdezes'));
+					echo ' | ' . $this->Html->link(__('Összköltség'), array('controller' => 'naplok', 'action' => 'sumcost'));
 				?>
 			</h1>
 		</div>

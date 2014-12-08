@@ -36,5 +36,14 @@ class Naplo extends AppModel {
 		)
 	);
 
+	public function sumcost(){
+		return $this->query('SELECT termenyek.id, termenyek.termeny, SUM(naplok.ora * munkasok.oradij) AS sumcost
+							FROM naplok, helyek, termenyek, munkasok
+							WHERE naplok.hely_id = helyek.id
+							AND naplok.termeny_id = termenyek.id
+							AND naplok.munkas_id = munkasok.id
+							GROUP BY termenyek.id
+							ORDER BY termenyek.termeny');
+	}
 }
 ?>

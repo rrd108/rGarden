@@ -119,16 +119,20 @@ class NaplokController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
 	
-	function lekerdezes(){
+	function lekerdezes($termenyId = null){
+		if($termenyId){
+			$this->request->data['Naplo']['termeny_id'] = $termenyId;
+		}
 		$szuro = array();
-		if($this->request->data['Naplo']['munkas_id'])
+		if(isset($this->request->data['Naplo']['munkas_id']))
 			$szuro['Naplo.munkas_id'] = $this->request->data['Naplo']['munkas_id'];
-		if($this->request->data['Naplo']['hely_id'])
+		if(isset($this->request->data['Naplo']['hely_id']))
 			$szuro['Naplo.hely_id'] =  $this->request->data['Naplo']['hely_id'];
-		if($this->request->data['Naplo']['szolgalat'])
+		if(isset($this->request->data['Naplo']['szolgalat']))
 			$szuro['Naplo.szolgalat'] = $this->request->data['Naplo']['szolgalat'];
-		if($this->request->data['Naplo']['termeny_id'])
+		if(isset($this->request->data['Naplo']['termeny_id'])){
 			$szuro['Naplo.termeny_id'] = $this->request->data['Naplo']['termeny_id'];
+		}
 		
 		if($szuro){
 			$this->Session->write('paginatorSzuro', $szuro);
@@ -145,8 +149,7 @@ class NaplokController extends AppController {
 		$munkasok = $this->Naplo->Munkas->find('list', array('fields' => array('id', 'munkas', 'oradij')));
 		$helyek = $this->Naplo->Hely->find('list', array('fields' => 'hely'));
 		$termenyek = $this->Naplo->Termeny->find('list', array('fields' => 'termeny'));
-		$termenyId = $this->request->data['Naplo']['termeny_id'];
-		$this->set(compact('munkasok', 'helyek', 'termenyek', 'termenyId'));
+		$this->set(compact('munkasok', 'helyek', 'termenyek'));
 	}
 	
 	function searchSzolgalat(){
@@ -162,6 +165,10 @@ class NaplokController extends AppController {
 									)
 								));
 		$this->render('searchSzolgalat', 'ajax');
+	}
+	
+	function sumcost(){
+		$this->set('sumcost', $this->Naplo->sumcost());
 	}
 }
 ?>

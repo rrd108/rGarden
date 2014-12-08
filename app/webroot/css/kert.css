@@ -16,3 +16,7 @@ li.selected    { background-color: #ffb; }
 div.auto_complete ul{
 	list-style-type: none;
 }
+
+.r{
+	text-align: right;
+}

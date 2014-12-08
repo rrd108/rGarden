@@ -30,13 +30,11 @@ if(isset($paginator))
 											)
 											);
 		print '</div>';
-		print $this->Form->input('Naplo.termeny_id', array('type' => 'hidden', 'value' => $termenyId));
-
+		print $this->Form->input('Naplo.termeny_id', array('type' => 'hidden', 'value' => isset($this->request->data['Naplo']['termeny_id']) ? $this->request->data['Naplo']['termeny_id'] : null));
 	?>
 	</fieldset>
 <?php echo $this->Form->end('Submit');?>
-</div>
-<div>
+
 <?php
 	if(isset($eredmeny)){
 		//debug($eredmeny);
@@ -129,4 +127,13 @@ if(isset($paginator))
 		echo $this->Paginator->counter();
 	}
 ?>
+</div>
+<div class="actions">
+	<ul>
+		<li><?php echo $this->Html->link(__('Új naplóbejegyzés'), array('action' => 'add'));?></li>
+		<li><?php echo $this->Html->link(__('Naplóbejegyzések'), array('action' => 'index'));?></li>
+		<li><?php echo $this->Html->link(__('Munkások'), array('controller' => 'munkasok', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Helyek'), array('controller' => 'helyek', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Termények'), array('controller' => 'termenyek', 'action' => 'index')); ?> </li>
+	</ul>
 </div>
