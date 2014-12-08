@@ -45,7 +45,10 @@ class AutoCompleteHelper extends AppHelper {
 		
 		//required falsera
 		$htmlOptions['required'] = false;
-
+		
+		//value
+		$htmlOptions['value'] = isset($options['value']) ? $options['value'] : null;
+		
 		//autocompleterOptions
 		if(isset($options['autocompleterOptions'])) {
 			$acOptions = $options['autocompleterOptions'];

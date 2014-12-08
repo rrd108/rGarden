@@ -92,7 +92,7 @@ class NaplokController extends AppController {
 			}
 			if ($this->Naplo->save($this->request->data)) {
 				$this->Session->setFlash(__('The Naplo has been saved'));
-				return $this->redirect(array('action' => 'index/page:' . $this->request->data['Naplo']['p']));
+				return $this->redirect(array('action' => 'index/page:' . $this->request->data['Naplo']['p'] . '#' . $id));
 			} else {
 				$this->Session->setFlash(__('The Naplo could not be saved. Please, try again.'));
 			}

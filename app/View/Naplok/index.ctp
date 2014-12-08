@@ -38,7 +38,13 @@ foreach ($naplok as $naplo):
 ?>
 	<tr<?php echo $class;?>>
 		<td>
-			<?php echo $this->Html->link($naplo['Munkas']['munkas'], array('controller' => 'munkasok', 'action' => 'view', $naplo['Munkas']['id'])); ?>
+			<?php
+			echo '<a name="' . $naplo['Naplo']['id'] . '"></a>';
+			echo $this->Html->link($naplo['Munkas']['munkas'],
+								   array(
+										'controller' => 'munkasok',
+										'action' => 'view', $naplo['Munkas']['id']));
+			?>
 		</td>
 		<td>
 			<?php echo $this->Html->link($naplo['Hely']['hely'], array('controller' => 'helyek', 'action' => 'view', $naplo['Hely']['id'])); ?>
@@ -63,7 +69,7 @@ foreach ($naplok as $naplo):
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('Muti'), array('action' => 'view', $naplo['Naplo']['id'])); ?>
-			<?php echo $this->Html->link(__('Szerk'), array('action' => 'edit', $naplo['Naplo']['id'] . '/' . $this->Paginator->current())); ?>
+			<?php echo $this->Html->link(__('Szerk'), array('action' => 'edit', $naplo['Naplo']['id'],  $this->Paginator->current())); ?>
 			<?php echo $this->Html->link(__('Del'), array('action' => 'delete', $naplo['Naplo']['id']), null, sprintf(__('Are you sure you want to delete # %s?'), $naplo['Naplo']['id'])); ?>
 		</td>
 	</tr>

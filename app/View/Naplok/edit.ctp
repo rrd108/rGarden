@@ -7,6 +7,7 @@ print $this->Html->script('kert.naplo.js', false);
  		<legend><?php print __('Naplóbejegyzés szerkesztése'); ?></legend>
 		<h2><?php print __('Összes költség') . ': <span id="osszktg">' . number_format(($this->request->data['Naplo']['ora']*$this->request->data['Munkas']['oradij'])+$this->request->data['Naplo']['koltseg'], 0, ',', '.') . '</span> ' . __('Ft'); ?></h2>
 	<?php
+	//debug($this->request->data);
 		print $this->Form->input('p', array('type' => 'hidden', 'value' => $p));
 		echo $this->Form->input('id');
 		print '<div class="input required">';
