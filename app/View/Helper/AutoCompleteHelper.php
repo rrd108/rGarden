@@ -42,6 +42,9 @@ class AutoCompleteHelper extends AppHelper {
 
 		//a böngésző autocompleterét kikapcsoljuk
 		$htmlOptions['autocomplete'] = "off";
+		
+		//required falsera
+		$htmlOptions['required'] = false;
 
 		//autocompleterOptions
 		if(isset($options['autocompleterOptions'])) {
